@@ -1,0 +1,90 @@
+[ 2016-01-12T21:26:37+08:00 ] 192.168.1.99 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000080s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001379s ]
+ERR: 无法加载模块:Favicon
+
+[ 2016-01-12T23:03:58+08:00 ] 192.168.1.99 /Upload/brand/569514d7d4c8e.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000083s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001105s ]
+ERR: 无法加载模块:Upload
+
+[ 2016-01-12T23:04:06+08:00 ] 192.168.1.99 /Upload/brand/569514d7d4c8e.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000386s ]
+ERR: 无法加载模块:Upload
+
+[ 2016-01-12T23:04:16+08:00 ] 192.168.1.99 /Upload/brand/569514d7d4c8e.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000073s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000777s ]
+ERR: 无法加载模块:Upload
+
+[ 2016-01-12T23:04:20+08:00 ] 192.168.1.99 /Uploader/brand/569514d7d4c8e.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000553s ]
+ERR: 无法加载模块:Uploader
+
+[ 2016-01-12T23:04:59+08:00 ] 192.168.1.99 /Uploads/2016-01-12/brand/569514d7d4c8e.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000234s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000898s ]
+ERR: 无法加载模块:Uploads
+
+[ 2016-01-12T23:05:04+08:00 ] 192.168.1.99 /Uploads/2016-01-12/brand/569514d7d4c8e.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000076s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001002s ]
+ERR: 无法加载模块:Uploads
+
+[ 2016-01-12T23:05:11+08:00 ] 192.168.1.99 /Uploads/brand/569514d7d4c8e.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000060s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000833s ]
+ERR: 无法加载模块:Uploads
+
+[ 2016-01-12T23:17:10+08:00 ] 192.168.1.99 /Upload/brand/2016-01-12//569518e7a3b50.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000035s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001179s ]
+ERR: 无法加载模块:Upload
+
+[ 2016-01-12T23:17:38+08:00 ] 192.168.1.99 /Upload/brand/2016-01-12/569518e7a3b50.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000270s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001421s ]
+ERR: 无法加载模块:Upload
+
+[ 2016-01-12T23:17:55+08:00 ] 192.168.1.99 /Upload/brand/2016-01-12/569518e7a3b50.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000164s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001045s ]
+ERR: 无法加载模块:Upload
+
+[ 2016-01-12T23:18:24+08:00 ] 192.168.1.99 /Uploadbrand/2016-01-12//5695193fe7148.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000095s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000918s ]
+ERR: 无法加载模块:Uploadbrand
+
+[ 2016-01-12T23:19:03+08:00 ] 192.168.1.99 /Upload/brand/2016-01-12/5695196703999.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000100s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001102s ]
+ERR: 无法加载模块:Upload
+
+[ 2016-01-12T23:19:56+08:00 ] 192.168.1.99 /Uploader/brand/2016-01-12/5695199cd063f.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001400s ]
+ERR: 无法加载模块:Uploader
+
+[ 2016-01-12T23:57:12+08:00 ] 192.168.1.99 /Uploads/%3C!DOCTYPE%20html%20PUBLIC%20%22-//W3C//DTD%20XHTML%201.0%20Transitional//EN%22%20%22http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd%22%3E%3Chtml%20xmlns=%22http://www.w3.org/1999/xhtml%22%3E%3Chead%3E%3Cmeta%20content=%22text/html;%20charset=utf-8%22%20http-equiv=%22Content-Type%22%3E%3Ctitle%3E%E7%B3%BB%E7%BB%9F%E5%8F%91%E7%94%9F%E9%94%99%E8%AF%AF%3C/title%3E%3Cstyle%20type=%22text/css%22%3E*%7B%20padding:%200;%20margin:%200;%20%7Dhtml%7B%20overflow-y:%20scroll;%20%7Dbody%7B%20background:%20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000185s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000797s ]
+ERR: 无法加载模块:Uploads
+

@@ -5,43 +5,88 @@
             <table cellspacing="1" cellpadding="3" width="100%">
                 <tr>
                     <td class="label">品牌名称</td>
-                    <td><input type="text" name="name" maxlength="60" value="{$name}"/><span
+                    <td>
+                        <input type='text' name='name' maxlength='60' value='{$name}'/> <span
                             class="require-field">*</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="label">品牌网址</td>
-                    <td><input type="text" name="name" maxlength="60" value="{$url}"/><span
+                    <td>
+                        <input type='text' name='url' maxlength='60' value='{$url}'/> <span
                             class="require-field">*</span>
                     </td>
                 </tr>
                 <tr>
-                    <td class="label">品牌Logo</td>
-                    <td><input type="text" name="name" maxlength="60" value="{$logo}"/>
+                    <td class="label">品牌LOGO</td>
+                    <td>
+                        <input id="logo_uploader" name="logo_uploader" type="file" multiple="true">
+                        <input type='hidden' class="logo" name='logo' maxlength='60'/>
+                        <div class="upload-img-box" style="display: none">
+                            <div class="upload-pre-item">
+                                <img src="">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">排序</td>
+                    <td>
+                        <input type="text" name="sort" maxlength="40" size="15" value="{$sort|default=20}"/> <span
+                            class="require-field">*</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="label">品牌描述</td>
-                    <td><textarea name="intro" cols="60" rows="4">{$intro}</textarea></td>
-                </tr>
-                <tr>
-                    <td class="label">排序</td>
-                    <td><input type="text" name="sort" maxlength="40" size="15" value="{$sort|default=20}"/></td>
+                    <td>
+                        <textarea name="textarea" cols="60" rows="4">{$intro}</textarea> <span
+                            class="require-field">*</span>
+                    </td>
                 </tr>
                 <tr>
                     <td class="label">是否显示</td>
-                    <td><input type="radio" class="status" name="status" value="1"/> 是
-                        <input type="radio" class="status" name="status" value="0"/>否
+                    <td>
+                        <input type='radio' class='status' name='status' value='1'/>是<input type='radio' class='status'
+                                                                                            name='status' value='0'/>否
+                        <span class="require-field">*</span>
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="2" align="center"><br/>
-                        <input type="hidden" name="id" value="{$id}">
-                        <input type="submit" class="button ajax_post" value=" 确定 "/>
-                        <input type="reset" class="button" value=" 重置 "/>
-                    </td>
+                <td colspan="2" align="center"><br/>
+                    <input type="hidden" name="id" value="{$id}">
+                    <input type="submit" class="button ajax_post" value=" 确定 "/>
+                    <input type="reset" class="button" value=" 重置 "/>
+                </td>
                 </tr>
             </table>
         </form>
     </div>
+</block>
+<block name="js">
+    <script src="__UPLOADIFY__/jquery.uploadify.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#logo_uploader").uploadify({
+                height: 30,
+                width: 120,
+                'buttonText' : '上传图片',
+                'debug': true,
+                'fileSizeLimit' : '1MB',
+                'fileTypeExts' : '*.gif; *.jpg; *.png', //文件后缀名的限制
+                'formData'      : {'dir' : 'brand'},    //上传文件时额外传递的参数
+//                'formData'      : {'dir' : 'brand-logo'},
+                swf: '__UPLOADIFY__/uploadify.swf',
+                uploader: "{:U('Upload/index')}",   //处理上传插件上传上来的文件
+                'onUploadSuccess' : function(file, data, response) {
+                    $('.upload-img-box').show();
+                    $('.upload-img-box .upload-pre-item img').attr('src','/Uploads/'+data);
+//                    $('.upload-img-box .upload-pre-item img').attr('src','__BRAND__/'+data);
+                    $('.logo').val(data);
+                },
+                'onUploadError' : function(file, errorCode, errorMsg, errorString) {
+                    alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
+                }
+            });
+
+        });
+    </script>
 </block>

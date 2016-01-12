@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link href="http://admin.shop.com/Public/Admin/css/general.css" rel="stylesheet" type="text/css"/>
     <link href="http://admin.shop.com/Public/Admin/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="http://admin.shop.com/Public/Admin/css/common.css" rel="stylesheet" type="text/css"/>
     <!--预留css的位置-->
 </head>
 <body>
@@ -24,41 +25,57 @@
             <table cellspacing="1" cellpadding="3" width="100%">
                 <tr>
                     <td class="label">品牌名称</td>
-                    <td><input type="text" name="name" maxlength="60" value="<?php echo ($name); ?>"/><span
+                    <td>
+                        <input type='text' name='name' maxlength='60' value='<?php echo ($name); ?>'/> <span
                             class="require-field">*</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="label">品牌网址</td>
-                    <td><input type="text" name="name" maxlength="60" value="<?php echo ($url); ?>"/><span
+                    <td>
+                        <input type='text' name='url' maxlength='60' value='<?php echo ($url); ?>'/> <span
                             class="require-field">*</span>
                     </td>
                 </tr>
                 <tr>
-                    <td class="label">品牌Logo</td>
-                    <td><input type="text" name="name" maxlength="60" value="<?php echo ($logo); ?>"/>
+                    <td class="label">品牌LOGO</td>
+                    <td>
+                        <input id="logo_uploader" name="logo_uploader" type="file" multiple="true">
+                        <input type='hidden' class="logo" name='logo' maxlength='60'/>
+                        <div class="upload-img-box" style="display: none">
+                            <div class="upload-pre-item">
+                                <img src="">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">排序</td>
+                    <td>
+                        <input type="text" name="sort" maxlength="40" size="15" value="<?php echo ((isset($sort) && ($sort !== ""))?($sort):20); ?>"/> <span
+                            class="require-field">*</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="label">品牌描述</td>
-                    <td><textarea name="intro" cols="60" rows="4"><?php echo ($intro); ?></textarea></td>
-                </tr>
-                <tr>
-                    <td class="label">排序</td>
-                    <td><input type="text" name="sort" maxlength="40" size="15" value="<?php echo ((isset($sort) && ($sort !== ""))?($sort):20); ?>"/></td>
+                    <td>
+                        <textarea name="textarea" cols="60" rows="4"><?php echo ($intro); ?></textarea> <span
+                            class="require-field">*</span>
+                    </td>
                 </tr>
                 <tr>
                     <td class="label">是否显示</td>
-                    <td><input type="radio" class="status" name="status" value="1"/> 是
-                        <input type="radio" class="status" name="status" value="0"/>否
+                    <td>
+                        <input type='radio' class='status' name='status' value='1'/>是<input type='radio' class='status'
+                                                                                            name='status' value='0'/>否
+                        <span class="require-field">*</span>
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="2" align="center"><br/>
-                        <input type="hidden" name="id" value="<?php echo ($id); ?>">
-                        <input type="submit" class="button ajax_post" value=" 确定 "/>
-                        <input type="reset" class="button" value=" 重置 "/>
-                    </td>
+                <td colspan="2" align="center"><br/>
+                    <input type="hidden" name="id" value="<?php echo ($id); ?>">
+                    <input type="submit" class="button ajax_post" value=" 确定 "/>
+                    <input type="reset" class="button" value=" 重置 "/>
+                </td>
                 </tr>
             </table>
         </form>
@@ -78,6 +95,34 @@
         $('.status').val([<?php echo ((isset($status) && ($status !== ""))?($status):1); ?>]);
     });
 </script>
-<!--专门为以后的子模板预留js-->
+
+    <script src="/Public/Admin/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#logo_uploader").uploadify({
+                height: 30,
+                width: 120,
+                'buttonText' : '上传图片',
+                'debug': true,
+                'fileSizeLimit' : '1MB',
+                'fileTypeExts' : '*.gif; *.jpg; *.png', //文件后缀名的限制
+                'formData'      : {'dir' : 'brand'},    //上传文件时额外传递的参数
+//                'formData'      : {'dir' : 'brand-logo'},
+                swf: '/Public/Admin/uploadify/uploadify.swf',
+                uploader: "<?php echo U('Upload/index');?>",   //处理上传插件上传上来的文件
+                'onUploadSuccess' : function(file, data, response) {
+                    $('.upload-img-box').show();
+                    $('.upload-img-box .upload-pre-item img').attr('src','/Uploads/'+data);
+//                    $('.upload-img-box .upload-pre-item img').attr('src','http://brand-logo.b0.upaiyun.com/'+data);
+                    $('.logo').val(data);
+                },
+                'onUploadError' : function(file, errorCode, errorMsg, errorString) {
+                    alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
+                }
+            });
+
+        });
+    </script>
+
 </body>
 </html>

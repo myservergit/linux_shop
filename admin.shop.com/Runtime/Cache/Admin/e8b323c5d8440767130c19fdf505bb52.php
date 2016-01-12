@@ -38,43 +38,40 @@
                 <th>ID<input type="checkbox" class="checked_all"></th>
                 <th>品牌名称</th>
                 <th>品牌网址</th>
-                <th>品牌Logo</th>
-                <th>品牌描述</th>
+                <th>品牌LOGO</th>
                 <th>排序</th>
+                <th>品牌描述</th>
                 <th>是否显示</th>
                 <th>操作</th>
             </tr>
             <?php if(is_array($rows)): $i = 0; $__LIST__ = $rows;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$row): $mod = ($i % 2 );++$i;?><tr>
                     <td width="50px"><?php echo ($row["id"]); ?><input type="checkbox" name="id[]" value="<?php echo ($row["id"]); ?>" class="ids"></td>
-                    <td class="first-cell">
-                        <span><?php echo ($row["name"]); ?></span>
-                    </td>
-                    <td align="center"><?php echo ($row["url"]); ?></td>
-                    <td align="center"><?php echo ($row["logo"]); ?></td>
-                    <td align="center"><?php echo ($row["intro"]); ?></td>
-                    <td align="center"><span><?php echo ($row["sort"]); ?></span>
-                    </td>
+                    <td class="first-cell"><span><?php echo ($row["name"]); ?></span></td>
+                    <td align='center'><?php echo ($row["url"]); ?></td>
+                    <td align='center'><img src="/Uploads/<?php echo ($row["logo"]); ?>" width="50px"/></td>
+                    <!--<td align='center'><img src="http://brand-logo.b0.upaiyun.com<?php echo ($row["logo"]); ?>!mini" width="50px"/></td>-->
+                    <td align='center'><?php echo ($row["sort"]); ?></td>
+                    <td align='center'><?php echo ($row["intro"]); ?></td>
                     <td align="center"><a class="ajax_get"
                                           href="<?php echo U('changeStatus',array('id'=>$row['id'],'status'=>1-$row['status']));?>"><img
-                            src="http://admin.shop.com/Public/Admin/images/<?php echo ($row["status"]); ?>.gif"/></a>
-                    </td>
+                            src="http://admin.shop.com/Public/Admin/images/<?php echo ($row["status"]); ?>.gif"/></a></td>
                     <td align="center">
                         <a href="<?php echo U('edit',array('id'=>$row['id']));?>">编辑</a> |
                         <a class='ajax_get' href="<?php echo U('changeStatus',array('id'=>$row['id']));?>">移除</a>
                     </td>
                 </tr><?php endforeach; endif; else: echo "" ;endif; ?>
-            <tr>
-                <td align="right" nowrap="true" colspan="8">
-                    <!-- $Id: page.htm 14216 2008-03-10 02:27:21Z testyang $ -->
-                    <div id="turn-page" class="page">
-                        <?php echo ($pageHtml); ?>
-                    </div>
-                </td>
-            </tr>
         </table>
 
         <!-- end brand list -->
     </div>
+    <tr>
+        <td align="right" nowrap="true" colspan="6">
+            <!-- $Id: page.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+            <div id="turn-page" class="page">
+                <?php echo ($pageHtml); ?>
+            </div>
+        </td>
+    </tr>
 
 <div id="footer">
     共执行 3 个查询，用时 0.014502 秒，Gzip 已禁用，内存占用 1.334 MB<br/>

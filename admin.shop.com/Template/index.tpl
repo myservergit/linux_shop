@@ -4,26 +4,27 @@
         <table cellpadding="3" cellspacing="1">
             <tr>
                 <th>ID<input type="checkbox" class="checked_all"></th>
-                <th>品牌名称</th>
-                <th>品牌网址</th>
-                <th>品牌LOGO</th>
-                <th>排序</th>
-                <th>品牌描述</th>
-                <th>是否显示</th>
+                <?php
+                    foreach($fields as $field){
+                        echo "<th>{$field['comment']}</th>";
+                    }
+                ?>
                 <th>操作</th>
             </tr>
             <volist name="rows" id="row">
                 <tr>
                     <td width="50px">{$row.id}<input type="checkbox" name="id[]" value="{$row.id}" class="ids"></td>
-                    <td class="first-cell"><span>{$row.name}</span></td>
-                    <td align='center'>{$row.url}</td>
-                    <td align='center'><img src="/Uploads/{$row.logo}" width="50px"/></td>
-                    <!--<td align='center'><img src="__BRAND__{$row.logo}!mini" width="50px"/></td>-->
-                    <td align='center'>{$row.sort}</td>
-                    <td align='center'>{$row.intro}</td>
-                    <td align="center"><a class="ajax_get"
-                                          href="{:U('changeStatus',array('id'=>$row['id'],'status'=>1-$row['status']))}"><img
-                            src="__IMG__/{$row.status}.gif"/></a></td>
+                    <?php
+                        foreach($fields as $field){
+                            if($field['field']=='name'){
+                                echo '<td class="first-cell"><span>{$row.name}</span></td>';
+                            }elseif($field['field']=='status'){
+                                echo '<td align="center"><a class="ajax_get" href="{:U(\'changeStatus\',array(\'id\'=>$row[\'id\'],\'status\'=>1-$row[\'status\']))}"><img src="__IMG__/{$row.status}.gif"/></a></td>';
+                            }else{
+                                echo "<td align='center'>{\$row.{$field['field']}}</td>";
+                            }
+                        }
+                    ?>
                     <td align="center">
                         <a href="{:U('edit',array('id'=>$row['id']))}">编辑</a> |
                         <a class='ajax_get' href="{:U('changeStatus',array('id'=>$row['id']))}">移除</a>

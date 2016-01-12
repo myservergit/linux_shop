@@ -36,24 +36,20 @@
         <table cellpadding="3" cellspacing="1">
             <tr>
                 <th>ID<input type="checkbox" class="checked_all"></th>
-                <th>供应商名称</th>
-                <th>供应商描述</th>
+                <th>供货商名称</th>
+                <th>简介</th>
                 <th>排序</th>
                 <th>是否显示</th>
                 <th>操作</th>
             </tr>
             <?php if(is_array($rows)): $i = 0; $__LIST__ = $rows;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$row): $mod = ($i % 2 );++$i;?><tr>
                     <td width="50px"><?php echo ($row["id"]); ?><input type="checkbox" name="id[]" value="<?php echo ($row["id"]); ?>" class="ids"></td>
-                    <td class="first-cell">
-                        <span><?php echo ($row["name"]); ?></span>
-                    </td>
-                    <td align="center"><?php echo ($row["intro"]); ?></td>
-                    <td align="center"><span><?php echo ($row["sort"]); ?></span>
-                    </td>
+                    <td class="first-cell"><span><?php echo ($row["name"]); ?></span></td>
+                    <td align='center'><?php echo ($row["intro"]); ?></td>
+                    <td align='center'><?php echo ($row["sort"]); ?></td>
                     <td align="center"><a class="ajax_get"
                                           href="<?php echo U('changeStatus',array('id'=>$row['id'],'status'=>1-$row['status']));?>"><img
-                            src="http://admin.shop.com/Public/Admin/images/<?php echo ($row["status"]); ?>.gif"/></a>
-                    </td>
+                            src="http://admin.shop.com/Public/Admin/images/<?php echo ($row["status"]); ?>.gif"/></a></td>
                     <td align="center">
                         <a href="<?php echo U('edit',array('id'=>$row['id']));?>">编辑</a> |
                         <a class='ajax_get' href="<?php echo U('changeStatus',array('id'=>$row['id']));?>">移除</a>

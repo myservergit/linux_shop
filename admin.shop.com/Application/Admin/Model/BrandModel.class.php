@@ -11,5 +11,5 @@ class BrandModel extends BaseModel {
 		array('logo', 'require', '品牌LOGO不能为空!'),
 		array('sort', 'require', '排序不能为空!'),
 		array('status', 'require', '是否显示不能为空!'),
-	);
+		    );
 }

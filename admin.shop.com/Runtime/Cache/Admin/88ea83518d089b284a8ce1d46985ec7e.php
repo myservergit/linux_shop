@@ -23,7 +23,7 @@
         <form method="post" action="<?php echo U();?>">
             <table cellspacing="1" cellpadding="3" width="100%">
                 <tr>
-                    <td class="label">数据库名</td>
+                    <td class="label">数据表名</td>
                     <td><input type="text" name="table_name" maxlength="60"/><span
                             class="require-field">*</span>
                     </td>
