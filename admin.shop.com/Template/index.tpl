@@ -32,15 +32,9 @@
                 </tr>
             </volist>
         </table>
-
+        <div id="turn-page" class="page">
+            {$pageHtml}
+        </div>
         <!-- end brand list -->
     </div>
-    <tr>
-        <td align="right" nowrap="true" colspan="6">
-            <!-- $Id: page.htm 14216 2008-03-10 02:27:21Z testyang $ -->
-            <div id="turn-page" class="page">
-                {$pageHtml}
-            </div>
-        </td>
-    </tr>
 </block>

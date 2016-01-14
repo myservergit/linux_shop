@@ -28,9 +28,11 @@
         </form>
     </div>
 </block>
-<input type="button" value="删除" class="ajax_post" href="{:U('changeStatus')}">
-<input type="button" value="显示" class="ajax_post" href="{:U('changeStatus',array('status'=>1))}">
-<input type="button" value="隐藏" class="ajax_post" href="{:U('changeStatus',array('status'=>0))}">
+<block name="list_option">
+    <input type="button" value="删除" class="ajax_post" href="{:U('changeStatus')}">
+    <input type="button" value="显示" class="ajax_post" href="{:U('changeStatus',array('status'=>1))}">
+    <input type="button" value="隐藏" class="ajax_post" href="{:U('changeStatus',array('status'=>0))}">
+</block>
 <block name="list"><!--为每个页面的列表留一个位置--></block>
 <div id="footer">
     共执行 3 个查询，用时 0.014502 秒，Gzip 已禁用，内存占用 1.334 MB<br/>

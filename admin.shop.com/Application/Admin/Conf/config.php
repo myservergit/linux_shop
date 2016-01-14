@@ -6,7 +6,9 @@ return array(
         '__IMG__' => WEB_URL . 'Public/Admin/images',
         '__JS__' => WEB_URL . 'Public/Admin/js',
         '__LAYER__' => WEB_URL . 'Public/Admin/layer/layer.js',
-        '__UPLOADIFY__' => '/Public/Admin/uploadify',
+        '__UPLOADIFY__' => WEB_URL .'Public/Admin/uploadify',
+        '__TREEGRID__' => WEB_URL .'Public/Admin/treegrid',
+        '__ZTREE__' => WEB_URL .'Public/Admin/zTree',
         '__BRAND__'=>'http://brand-logo.b0.upaiyun.com',
     ),
 );

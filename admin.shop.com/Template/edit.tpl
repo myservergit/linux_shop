@@ -9,7 +9,7 @@
                         <td>
                             <?php
                             if($field['field_type']=='textarea'){
-                                echo "<textarea name=\"textarea\" cols=\"60\" rows=\"4\">{\$intro}</textarea>";
+                                echo "<textarea name=\"intro\" cols=\"60\" rows=\"4\">{\$intro}</textarea>";
                             }elseif($field['field_type']=='radio'){
                                 foreach($field['option_values'] as $k=>$v){
                                     echo "<input type='radio' class='{$field['field']}' name='{$field['field']}' value='{$k}'/>{$v}";

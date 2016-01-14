@@ -74,4 +74,12 @@ class BaseModel extends Model{
 
         return $this->save($data);
     }
+
+    /**
+     * 得到树状结构列表数据
+     * @return mixed
+     */
+    public function getTreeList(){
+        return $this->where(array('status' => array('gt', -1)))->order('lft')->select();
+    }
 }
