@@ -2,6 +2,7 @@
 namespace Admin\Model;
 
 
+use Admin\Service\NestedSetsService;
 use Think\Model;
 
 class GoodsCategoryModel extends BaseModel {
@@ -13,4 +14,49 @@ class GoodsCategoryModel extends BaseModel {
 		array('rgt', 'require', '右边界不能为空!'),
 		array('status', 'require', '是否显示不能为空!'),
 		    );
+
+	/**
+	 * 商品分类的添加
+	 * @return false|int
+	 */
+	public function add(){
+		//创建能够执行sql的对象
+		$dbMysql=new DbMysqlInterfaceImplModel();
+		//计算边界
+		$nestedSetsService=new NestedSetsService($dbMysql,'goods_category','lft','rgt','parent_id','id','level');
+		//执行添加数据,返回对应id
+		return $nestedSetsService->insert($this->data['parent_id'],$this->data,'bottom');
+	}
+
+	/**
+	 * 商品分类的修改
+	 * @return bool
+	 */
+	public function save(){
+		//创建能够执行sql的对象
+		$dbMysql=new DbMysqlInterfaceImplModel();
+		//计算边界
+		$nestedSetsService=new NestedSetsService($dbMysql,'goods_category','lft','rgt','parent_id','id','level');
+		//节点的移动
+		$nestedSetsService->moveUnder($this->data['id'],$this->data['parent_id']);
+		return parent::save();
+	}
+	/**
+	 * 根据id更改商品分类状态
+	 * @param $id   数据ID
+	 * @param int $status 数据状态,默认值为-1(移除)
+	 * @return bool
+	 */
+	public function changeStatus($id, $status = -1) {
+		$sql="SELECT child.id FROM goods_category AS child,goods_category AS parent WHERE parent.id=$id AND child.lft>=parent.lft AND child.rgt<=parent.rgt";
+		$rows=$this->query($sql);
+		$id=array_column($rows,'id');
+		$data = array('id' => array('in', $id), 'status' => $status);
+		//如果状态改为-1(移除),就将供货商的名称后面加一个'_del'的后缀
+		if ($status == -1) {
+			$data['name'] = array('exp', "concat(name,'_del')");
+		}
+
+		return parent::save($data);
+	}
 }

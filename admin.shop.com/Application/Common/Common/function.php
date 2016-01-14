@@ -17,3 +17,16 @@ function get_model_error($model) {
     $errorMsg .= '</ul>';
     return $errorMsg;
 }
+
+/**
+ * 返回数组中指定的一列
+ */
+if(!function_exists('array_column')){//版本兼容处理
+    function array_column($rows,$field){
+        $value=array();
+        foreach($rows as $row){
+            $value[]=$row[$field];
+        }
+        return $value;
+    }
+}

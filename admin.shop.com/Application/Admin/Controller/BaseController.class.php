@@ -31,7 +31,7 @@ class BaseController extends Controller {
         cookie('__FORWORD__', $_SERVER['REQUEST_URI']);
 
         $this->assign($pageResult);
-        $this->assign('meta_title',$this->meta_title);
+        $this->assign('meta_title', $this->meta_title);
         $this->display('index');
     }
 
@@ -61,9 +61,17 @@ class BaseController extends Controller {
             }
             $this->error('操作失败' . get_model_error($this->model));
         } else {
+            $this->_edit_view_before();
             $this->assign('meta_title', '添加' . $this->meta_title);
             $this->display('edit');
         }
+    }
+
+    /**
+     * 该方法主要是被子类覆盖, 为编辑页面展示之前准备数据.
+     */
+    protected function _edit_view_before() {
+
     }
 
     /**
@@ -74,12 +82,13 @@ class BaseController extends Controller {
         if (IS_POST) {
             if ($this->model->create() !== false) {
                 if ($this->model->save() !== false) {
-                    $this->success('添加成功', cookie('__FORWORD__'));
+                    $this->success('修改成功', cookie('__FORWORD__'));
                     return;
                 }
             }
             $this->error('操作失败' . get_model_error($this->model));
         } else {
+            $this->_edit_view_before();
             $row = $this->model->find($id);
             $this->assign($row);
             $this->assign('meta_title', '编辑' . $this->meta_title);
