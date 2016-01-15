@@ -21,12 +21,28 @@ function get_model_error($model) {
 /**
  * 返回数组中指定的一列
  */
-if(!function_exists('array_column')){//版本兼容处理
-    function array_column($rows,$field){
-        $value=array();
-        foreach($rows as $row){
-            $value[]=$row[$field];
+if (!function_exists('array_column')) {//版本兼容处理
+    function array_column($rows, $field) {
+        $value = array();
+        foreach ($rows as $row) {
+            $value[] = $row[$field];
         }
         return $value;
     }
+}
+/**
+ * 下拉菜单的生成
+ */
+function arr2select($name,$rows,$defaultValue='',$valueField='id',$textField='name') {
+    $select_html="<select name='$name'>";
+    $select_html.="<option value = '0' > --请选择--</option >";
+    foreach($rows as $row){
+        $selected='';
+        if($row[$valueField]==$defaultValue){
+            $selected='selected';
+        }
+        $select_html.="<option value = '{$row[$valueField]}' {$selected}>{$row[$textField]}</option >";
+    }
+    $select_html.="</select>";
+    return $select_html;
 }

@@ -20,11 +20,11 @@
                 <tr>
                     <td class="label">品牌LOGO</td>
                     <td>
+                        <input type='hidden' class="logo" name='logo' maxlength='60' value="{$logo}"/>
                         <input id="logo_uploader" name="logo_uploader" type="file" multiple="true">
-                        <input type='hidden' class="logo" name='logo' maxlength='60'/>
-                        <div class="upload-img-box" style="display: none">
+                        <div class="upload-img-box" <empty name="id">style="display: none"</empty>>
                             <div class="upload-pre-item">
-                                <img src="">
+                                <img src="__BRAND__/{$logo}!mini">
                             </div>
                         </div>
                     </td>
@@ -72,14 +72,14 @@
                 'debug': true,
                 'fileSizeLimit' : '1MB',
                 'fileTypeExts' : '*.gif; *.jpg; *.png', //文件后缀名的限制
-                'formData'      : {'dir' : 'brand'},    //上传文件时额外传递的参数
-//                'formData'      : {'dir' : 'brand-logo'},
+//                'formData'      : {'dir' : 'brand'},    //上传文件时额外传递的参数
+                'formData'      : {'dir' : 'brand-logo'},
                 swf: '__UPLOADIFY__/uploadify.swf',
                 uploader: "{:U('Upload/index')}",   //处理上传插件上传上来的文件
                 'onUploadSuccess' : function(file, data, response) {
                     $('.upload-img-box').show();
-                    $('.upload-img-box .upload-pre-item img').attr('src','/Uploads/'+data);
-//                    $('.upload-img-box .upload-pre-item img').attr('src','__BRAND__/'+data);
+//                    $('.upload-img-box .upload-pre-item img').attr('src','/Uploads/'+data);
+                    $('.upload-img-box .upload-pre-item img').attr('src','__BRAND__/'+data);
                     $('.logo').val(data);
                 },
                 'onUploadError' : function(file, errorCode, errorMsg, errorString) {

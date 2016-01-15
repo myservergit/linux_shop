@@ -14,6 +14,7 @@ use Think\Controller;
 class BaseController extends Controller {
 
     protected $model;
+    protected $usePostParams=false;
 
     public function _initialize() {
         $this->model = D(CONTROLLER_NAME);
@@ -54,7 +55,7 @@ class BaseController extends Controller {
     public function add() {
         if (IS_POST) {
             if ($this->model->create() !== false) {
-                if ($this->model->add() !== false) {
+                if ($this->model->add($this->usePostParams?I('post.'):'') !== false) {
                     $this->success('添加成功', U('index'));
                     return;
                 }
@@ -81,7 +82,7 @@ class BaseController extends Controller {
     public function edit($id) {
         if (IS_POST) {
             if ($this->model->create() !== false) {
-                if ($this->model->save() !== false) {
+                if ($this->model->save($this->usePostParams?I('post.'):'') !== false) {
                     $this->success('修改成功', cookie('__FORWORD__'));
                     return;
                 }

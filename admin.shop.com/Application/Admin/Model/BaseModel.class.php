@@ -54,8 +54,8 @@ class BaseModel extends Model{
      * 获取状态大于-1的供货商数据
      * @return mixed
      */
-    public function getList() {
-        return $this->where(array('status' => array('gt', -1)))->select();
+    public function getList($field='*') {
+        return $this->field($field)->where(array('status' => array('gt', -1)))->select();
     }
 
     /**
@@ -72,7 +72,7 @@ class BaseModel extends Model{
             $data['name'] = array('exp', "concat(name,'_del')");
         }
 
-        return $this->save($data);
+        return parent::save($data);
     }
 
     /**

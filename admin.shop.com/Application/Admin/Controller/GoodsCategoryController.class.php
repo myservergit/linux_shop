@@ -28,16 +28,4 @@ class GoodsCategoryController extends BaseController {
         $this->assign('zNodes', $rows);
     }
 
-    /**
-     * 根据id更改商品分类状态
-     * @param $id   数据ID
-     * @param int $status 数据状态,默认值为-1(移除)
-     */
-    public function changeStatus($id, $status = -1) {
-        if ($this->model->changeStatus($id, $status) !== false) {
-            $this->success('操作成功', U('index'));
-        } else {
-            $this->error('操作失败' . get_model_error($this->model));
-        }
-    }
 }
