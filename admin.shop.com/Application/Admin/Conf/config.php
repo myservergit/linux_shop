@@ -14,17 +14,17 @@ return array(
         '__GOODS__' => 'http://itsource-goods.b0.upaiyun.com',
     ),
     'UPLOAD_CONFIG' => array(
-//        'rootPath' => './Uploads/', //±£´æ¸ùÂ·¾¶
-//        'savePath' => $dir . '/', //±£´æÂ·¾¶
+//        'rootPath' => './Uploads/', //ä¿å­˜æ ¹è·¯å¾„
+//        'savePath' => $dir . '/', //ä¿å­˜è·¯å¾„
 
-            'rootPath' => './', //±£´æ¸ùÂ·¾¶
-            'driver' => 'Upyun', // ÎÄ¼þÉÏ´«Çý¶¯
+            'rootPath' => './', //ä¿å­˜åˆ°upyunçš„æ ¹è·¯å¾„
+            'driver' => 'Upyun', //æ–‡ä»¶ä¸Šä¼ é©±åŠ¨
             'driverConfig' => array(
-                'host'     => 'v0.api.upyun.com', //ÓÖÅÄÔÆ·þÎñÆ÷
-                'username' => 'itsource', //ÓÖÅÄÔÆÓÃ»§
-                'password' => 'itsource', //ÓÖÅÄÔÆÃÜÂë
-//                'bucket'   => $dir, //¿Õ¼äÃû³Æ
-                'timeout'  => 90, //³¬Ê±Ê±¼ä
-            ), // ÉÏ´«Çý¶¯ÅäÖÃ
+                'host'     => 'v0.api.upyun.com', //åˆæ‹äº‘æœåŠ¡å™¨
+                'username' => 'itsource', //åˆæ‹æ“ä½œå‘˜ç”¨æˆ·
+                'password' => 'itsource', //åˆæ‹äº‘æ“ä½œå‘˜å¯†ç 
+//                'bucket'   => $dir, //åˆæ‹äº‘ç©ºé—´åç§°
+                'timeout'  => 90, //è¶…æ—¶æ—¶é—´
+            ), //ä¸Šä¼ é©±åŠ¨é…ç½®
     ),
 );

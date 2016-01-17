@@ -12,7 +12,7 @@ namespace Admin\Model;
 use Think\Model;
 use Think\Page;
 
-class BaseModel extends Model{
+class BaseModel extends Model {
     // 是否批处理验证
     protected $patchValidate = true;
 
@@ -24,13 +24,14 @@ class BaseModel extends Model{
         $wheres = array();
         //搜索功能
         if (!empty($keyword)) {
-            $wheres['name'] = array('like', "$keyword%");
+            $wheres['obj.name'] = array('like', "$keyword%");
         }
         //排除伪删除的数据
-        $wheres['status'] = array('gt', -1);
+        $wheres['obj.status'] = array('gt', -1);
         //每页显示记录数和
         $pageSize = 2;
         //伪删除之外的总的记录数
+        $this->alias('obj');
         $totalRows = $this->where($wheres)->count();
         //分页工具的实例化
         $page = new Page($totalRows, $pageSize);
@@ -46,16 +47,26 @@ class BaseModel extends Model{
             $page->firstRow = $totalRows - $page->listRows;
         }
         //每页的要显示的数据
+        $this->alias('obj');
+        $this->_setModel();
         $rows = $this->where($wheres)->limit($page->firstRow, $page->listRows)->select();
         return array('rows' => $rows, 'pageHtml' => $pageHtml);
+    }
+
+    /**
+     * 该方法主要是被子类覆盖..
+     */
+    protected function _setModel() {
+
     }
 
     /**
      * 获取状态大于-1的供货商数据
      * @return mixed
      */
-    public function getList($field='*') {
-        return $this->field($field)->where(array('status' => array('gt', -1)))->select();
+    public function getList($field = '*',$wheres=array()) {
+        $wheres['status']=array('gt', -1);
+        return $this->field($field)->where($wheres)->select();
     }
 
     /**
@@ -79,10 +90,10 @@ class BaseModel extends Model{
      * 得到树状结构列表数据
      * @return mixed
      */
-    public function getTreeList($json=false,$field='*'){
-        $rows=$this->field($field)->where(array('status' => array('gt', -1)))->order('lft')->select();
-        if($json){
-            $rows=json_encode($rows);
+    public function getTreeList($json = false, $field = '*') {
+        $rows = $this->field($field)->where(array('status' => array('gt', -1)))->order('lft')->select();
+        if ($json) {
+            $rows = json_encode($rows);
         }
         return $rows;
     }

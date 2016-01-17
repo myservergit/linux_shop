@@ -14,6 +14,7 @@ use Think\Controller;
 class BaseController extends Controller {
 
     protected $model;
+    //是否使用post中的数据
     protected $usePostParams=false;
 
     public function _initialize() {
