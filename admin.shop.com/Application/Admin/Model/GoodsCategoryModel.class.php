@@ -59,4 +59,15 @@ class GoodsCategoryModel extends BaseModel {
 
 		return parent::save($data);
 	}
+
+	/**
+	 * 根据商品分类id获取叶子节点id
+	 * @param $goods_category_id
+	 */
+	public function getCategoryLeafIds($goods_category_id){
+		$sql="SELECT child.id FROM goods_category AS parent,goods_category AS child WHERE parent.id={$goods_category_id} AND parent.`lft`<=child.`lft` AND parent.`rgt`>=child.`rgt` AND child.`lft`+1=child.`rgt`";
+		$rows=$this->query($sql);
+		$ids=array_column($rows,'id');
+		return $ids;
+	}
 }

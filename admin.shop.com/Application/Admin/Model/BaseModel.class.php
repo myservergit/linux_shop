@@ -20,12 +20,7 @@ class BaseModel extends Model {
      * 得到分页要准备的数据
      * @return array
      */
-    public function getPageResult($keyword) {
-        $wheres = array();
-        //搜索功能
-        if (!empty($keyword)) {
-            $wheres['obj.name'] = array('like', "$keyword%");
-        }
+    public function getPageResult($wheres= array()) {
         //排除伪删除的数据
         $wheres['obj.status'] = array('gt', -1);
         //每页显示记录数和
@@ -50,11 +45,19 @@ class BaseModel extends Model {
         $this->alias('obj');
         $this->_setModel();
         $rows = $this->where($wheres)->limit($page->firstRow, $page->listRows)->select();
+        $this->_handleRows($rows);
         return array('rows' => $rows, 'pageHtml' => $pageHtml);
     }
 
     /**
-     * 该方法主要是被子类覆盖..
+     * 该方法主要是被子类覆盖,处理分页数据中的状态
+     */
+    protected function _handleRows(&$rows) {
+
+    }
+
+    /**
+     * 该方法主要是被子类覆盖,处理多表查询
      */
     protected function _setModel() {
 
@@ -64,8 +67,8 @@ class BaseModel extends Model {
      * 获取状态大于-1的供货商数据
      * @return mixed
      */
-    public function getList($field = '*',$wheres=array()) {
-        $wheres['status']=array('gt', -1);
+    public function getList($field = '*', $wheres = array()) {
+        $wheres['status'] = array('gt', -1);
         return $this->field($field)->where($wheres)->select();
     }
 

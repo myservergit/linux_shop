@@ -27,4 +27,6 @@ return array(
                 'timeout'  => 90, //超时时间
             ), //上传驱动配置
     ),
+    //页面调试
+//    'SHOW_PAGE_TRACE' =>true,
 );

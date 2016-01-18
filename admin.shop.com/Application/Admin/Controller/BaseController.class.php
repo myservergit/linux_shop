@@ -15,7 +15,7 @@ class BaseController extends Controller {
 
     protected $model;
     //是否使用post中的数据
-    protected $usePostParams=false;
+    protected $usePostParams = false;
 
     public function _initialize() {
         $this->model = D(CONTROLLER_NAME);
@@ -25,16 +25,42 @@ class BaseController extends Controller {
      * 供货商展示
      */
     public function index() {
+        $wheres = array();
         //获取关键字
         $keyword = I('get.keyword', '');
-        $pageResult = $this->model->getPageResult($keyword);
+        if (!empty($keyword)) {
+            $wheres['obj.name'] = array('like', "%{$keyword}%");
+        }
+
+        //该钩子方法实现高级查询的条件
+        $this->_setWheres($wheres);
+
+        $pageResult = $this->model->getPageResult($wheres);
 
         //将当前访问的url地址保存到cookie中
         cookie('__FORWORD__', $_SERVER['REQUEST_URI']);
 
         $this->assign($pageResult);
         $this->assign('meta_title', $this->meta_title);
+
+        //为搜索品牌和供货商的下拉列表准备数据
+        $this->_index_view_before();
+
         $this->display('index');
+    }
+
+    /**
+     * 该钩子方法主要被子类覆盖,准备高级查询的条件
+     */
+    protected function _setWheres($wheres) {
+
+    }
+
+    /**
+     * 该钩子方法主要被子类覆盖,为搜索品牌和供货商的下拉列表准备数据
+     */
+    protected function _index_view_before() {
+
     }
 
     /**
@@ -56,7 +82,7 @@ class BaseController extends Controller {
     public function add() {
         if (IS_POST) {
             if ($this->model->create() !== false) {
-                if ($this->model->add($this->usePostParams?I('post.'):'') !== false) {
+                if ($this->model->add($this->usePostParams ? I('post.') : '') !== false) {
                     $this->success('添加成功', U('index'));
                     return;
                 }
@@ -83,7 +109,7 @@ class BaseController extends Controller {
     public function edit($id) {
         if (IS_POST) {
             if ($this->model->create() !== false) {
-                if ($this->model->save($this->usePostParams?I('post.'):'') !== false) {
+                if ($this->model->save($this->usePostParams ? I('post.') : '') !== false) {
                     $this->success('修改成功', cookie('__FORWORD__'));
                     return;
                 }
