@@ -1,0 +1,146 @@
+<extend name="Common/index"/>
+<block name="css">
+    <link rel="stylesheet" href="__ZTREE__/css/zTreeStyle/zTreeStyle.css" type="text/css">
+</block>
+<block name="searchForm">
+    <div class="form-div">
+        <form action="{:U()}" name="searchForm">
+            <img src="__IMG__/icon_search.gif" width="26" height="22" border="0" alt="SEARCH"/>
+            <input type="text" name="keyword" size="15" placeholder="请输入关键字" value="{$Think.get.keyword}"/>
+            <input type="text" size="15" placeholder="请选择分类" id="citySel" readonly/>
+            <input type="hidden" id="goods_category_id" name="goods_category_id">
+            {:arr2select('brand_id',$brands,I('get.brand_id'))}
+            {:arr2select('supplier_id',$suppliers,I('get.supplier_id'))}
+            <input type="submit" value=" 搜索 " class="button"/>
+        </form>
+    </div>
+</block>
+<block name="list">
+    <div class="list-div" id="listDiv">
+        <table cellpadding="3" cellspacing="1">
+            <tr>
+                <th>ID<input type="checkbox" class="checked_all"></th>
+                <th>商品名称</th>
+                <th>简称</th>
+                <th>货号</th>
+                <th>商品分类</th>
+                <th>商品品牌</th>
+                <th>供货商</th>
+                <th>本店价格</th>
+                <th>市场价格</th>
+                <th>商品LOGO</th>
+                <th>库存</th>
+                <th>精品</th>
+                <th>新品</th>
+                <th>热销</th>
+                <th>是否显示</th>
+                <th>操作</th>
+            </tr>
+            <volist name="rows" id="row">
+                <tr>
+                    <td width="50px">{$row.id}<input type="checkbox" name="id[]" value="{$row.id}" class="ids"></td>
+                    <td class="first-cell"><span>{$row.name}</span></td>
+                    <td align='center'>{$row.short_name}</td>
+                    <td align='center'>{$row.sn}</td>
+                    <td align='center'>{$row.goods_category_name}</td>
+                    <td align='center'>{$row.goods_brand_name}</td>
+                    <td align='center'>{$row.goods_supplier_name}</td>
+                    <td align='center'>{$row.shop_price}</td>
+                    <td align='center'>{$row.market_price}</td>
+                    <td align='center'><img src="__GOODS__/{$row.logo}!min"></td>
+                    <td align='center'>{$row.stock}</td>
+                    <td align='center'><img src="__IMG__/{$row.is_best}.gif"/></td>
+                    <td align='center'><img src="__IMG__/{$row.is_new}.gif"/></td>
+                    <td align='center'><img src="__IMG__/{$row.is_hot}.gif"/></td>
+                    <td align="center"><a class="ajax_get"
+                                          href="{:U('changeStatus',array('id'=>$row['id'],'status'=>1-$row['status']))}"><img
+                            src="__IMG__/{$row.status}.gif"/></a></td>
+                    <td align="center">
+                        <a href="{:U('edit',array('id'=>$row['id']))}">编辑</a> |
+                        <a class='ajax_get' href="{:U('changeStatus',array('id'=>$row['id']))}">移除</a>
+                    </td>
+                </tr>
+            </volist>
+        </table>
+        <div id="turn-page" class="page">
+            {$pageHtml}
+        </div>
+        <!-- end brand list -->
+    </div>
+    <style type="text/css">
+        .ztree {
+            margin-top: 10px;
+            border: 1px solid #617775;
+            background: #f0f6e4;
+            width: 220px;
+            height: auto;
+            overflow-y: scroll;
+            overflow-x: auto;
+        }
+    </style>
+    <div id="menuContent" class="menuContent" style="display:none; position: absolute;">
+        <ul id="treeDemo" class="ztree" style="margin-top:0; width:160px;"></ul>
+    </div>
+</block>
+<block name="js">
+    <script type="text/javascript" src="__ZTREE__/js/jquery.ztree.core-3.5.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var setting = {
+                view: {
+                    dblClickExpand: false
+                },
+                data: {
+                    simpleData: {
+                        enable: true,
+                        pIdKey: "parent_id"
+                    }
+                },
+                callback: {
+                    onClick: onClick
+                }
+            };
+
+            var zNodes = {$zNodes};
+
+            function onClick(event, treeId, treeNode) {
+                $('#citySel').val(treeNode.name);
+                $('#goods_category_id').val(treeNode.id);
+                hideMenu();
+            }
+
+            function showMenu() {
+                var cityObj = $("#citySel");
+                var cityOffset = $("#citySel").offset();
+                $("#menuContent").css({left: cityOffset.left + "px",top: cityOffset.top + cityObj.outerHeight() + "px"}).slideDown("fast");
+                $(window.document).bind("mousedown", onBodyDown);
+            }
+
+            function hideMenu() {
+                $("#menuContent").fadeOut("fast");
+                $(window.document).unbind("mousedown", onBodyDown);
+            }
+
+            function onBodyDown(event) {
+                if (!(event.target.id == "citySel" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length > 0)) {
+                    hideMenu();
+                }
+            }
+
+
+            var treeObj=$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+
+            //全部展开
+            treeObj.expandAll(true);
+
+            $('#citySel').click(showMenu);
+
+            <notempty name='Think.get.goods_category_id'>
+                var node = treeObj.getNodeByParam("id", {$Think.get.goods_category_id});
+            console.debug(node);
+                $('#goods_category_id').val(node.id);
+                $('#citySel').val(node.name);
+            </notempty>
+        });
+    </script>
+</block>
