@@ -7,5 +7,6 @@ return array(
         '__JS__' => WEB_URL . 'Public/Home/js',
         '__BRAND__' => 'http://brand-logo.b0.upaiyun.com',
         '__GOODS__' => 'http://itsource-goods.b0.upaiyun.com',
+        '__UEDIT__' => WEB_URL . 'Public/Home/uedit',
     ),
 );

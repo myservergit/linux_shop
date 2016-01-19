@@ -5,17 +5,17 @@
 <block name="form">
     <div id="tabbar-div">
         <p>
-            <span class="tab-back">通用信息</span>
+            <span class="tab-front">通用信息</span>
             <span class="tab-back">详细描述</span>
             <span class="tab-back">会员价格</span>
             <span class="tab-back">商品属性</span>
             <span class="tab-back">商品相册</span>
-            <span class="tab-front">关联文章</span>
+            <span class="tab-back">关联文章</span>
         </p>
     </div>
     <div class="main-div">
         <form method="post" action="{:U()}">
-            <table cellspacing="1" cellpadding="3" width="100%" style="display: none">
+            <table cellspacing="1" cellpadding="3" width="100%">
                 <tr>
                     <td class="label">商品名称</td>
                     <td>
@@ -100,9 +100,11 @@
                 <tr>
                     <td class="label">商品状态</td>
                     <td>
-                        <input type='checkbox' class='goods_status' name='goods_status[]' value='1'/>精品
-                        <input type='checkbox' class='goods_status' name='goods_status[]' value='2'/>新品
-                        <input type='checkbox' class='goods_status' name='goods_status[]' value='4'/>热销
+                        <input type='checkbox' class='goods_status' name='goods_status[]' value='1'/>推荐商品
+                        <input type='checkbox' class='goods_status' name='goods_status[]' value='2'/>新品上架
+                        <input type='checkbox' class='goods_status' name='goods_status[]' value='4'/>热卖商品
+                        <input type='checkbox' class='goods_status' name='goods_status[]' value='8'/>疯狂抢购
+                        <input type='checkbox' class='goods_status' name='goods_status[]' value='16'/>猜您喜欢
                         <span class="require-field">*</span>
                     </td>
                 </tr>
@@ -147,7 +149,7 @@
                     margin: 5px;
                     position: relative;
                     width: 125px;
-                    height: 71px;
+                    height: 125px;
                 }
                 .upload-img-gallery .upload-pre-item a{
                     position: absolute;
@@ -180,7 +182,7 @@
                     </td>
                 </tr>
             </table>
-            <table style="" cellspacing="1" cellpadding="3" width="100%">
+            <table cellspacing="1" cellpadding="3" width="100%" style="display: none">
                 <tr>
                     <td colspan="3">
                         <img src="__IMG__/icon_search.gif" width="26" height="22" border="0" alt="SEARCH">
@@ -220,7 +222,7 @@
             </table>
             <div style="text-align: center">
                 <input type="hidden" name="id" value="{$id}">
-                <input type="submit" class="button" value=" 确定 "/>
+                <input type="submit" class="button ajax_post" value=" 确定 "/>
                 <input type="reset" class="button" value=" 重置 "/>
             </div>
         </form>
@@ -327,6 +329,12 @@
             }
             if(goods_status&4){
                 goods_status_arr.push(4);
+            }
+            if(goods_status&8){
+                goods_status_arr.push(8);
+            }
+            if(goods_status&16){
+                goods_status_arr.push(16);
             }
             $('.goods_status').val(goods_status_arr);
             </notempty>

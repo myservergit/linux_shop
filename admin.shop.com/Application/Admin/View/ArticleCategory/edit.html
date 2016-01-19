@@ -43,3 +43,10 @@
         </form>
     </div>
 </block>
+<block name="js">
+    <script type="text/javascript">
+        $(function(){
+            $('.is_help').val([{$is_help|default=0}]);
+        });
+    </script>
+</block>

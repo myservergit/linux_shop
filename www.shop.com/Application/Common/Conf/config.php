@@ -8,4 +8,6 @@ return array(
     'DB_PORT'                => '', // 端口
     'DB_PREFIX'              => '', // 数据库表前缀
     'DB_PARAMS'              => array(), // 数据库连接参数
+
+    'DATA_CACHE_TYPE'        => 'Redis',
 );

@@ -24,6 +24,7 @@ class GoodsModel extends BaseModel {
             $row['is_best']=($row['goods_status']&1);
             $row['is_new']=(($row['goods_status']&2)>>1);
             $row['is_hot']=(($row['goods_status']&4)>>2);
+            $row['is_crazy']=(($row['goods_status']&8)>>3);
         }
         unset($row);
     }
@@ -46,6 +47,7 @@ class GoodsModel extends BaseModel {
     public function add($requestData) {
         $this->startTrans();
         $this->handleGoodsStatus();
+        $this->data['add_time']=NOW_TIME;
         $id = parent::add();
         if ($id === false) {
             $this->rollback();
