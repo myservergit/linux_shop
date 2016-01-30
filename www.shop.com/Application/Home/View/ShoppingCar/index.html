@@ -1,0 +1,99 @@
+<extend name="common"/>
+<block name="css">
+	<link rel="stylesheet" href="__CSS__/cart.css" type="text/css">
+</block>
+<block name="center">
+	<!-- 页面头部 start -->
+	<div class="header w990 bc mt15">
+		<div class="logo w990">
+			<h2 class="fl"><a href="index.html"><img src="__IMG__/logo.png" alt="京西商城"></a></h2>
+			<div class="flow fr">
+				<ul>
+					<li class="cur">1.我的购物车</li>
+					<li>2.填写核对订单信息</li>
+					<li>3.成功提交订单</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 页面头部 end -->
+
+	<div style="clear:both;"></div>
+
+	<!-- 主体部分 start -->
+	<div class="mycart w990 mt10 bc">
+		<h2><span>我的购物车</span></h2>
+		<table>
+			<thead>
+			<tr>
+				<th class="col1">商品名称</th>
+				<th class="col2">商品信息</th>
+				<th class="col3">单价</th>
+				<th class="col4">数量</th>
+				<th class="col5">小计</th>
+				<th class="col6">操作</th>
+			</tr>
+			</thead>
+			<tbody>
+			<volist name="rows" id="row">
+				<tr>
+					<td class="col1"><a target="_blank" href="{:U('Index/goods',array('id'=>$row['goods_id']))}"><img src="__GOODS__/{$row.logo}!m" alt="" /></a>  <strong><a target="_blank" href="{:U('Index/goods',array('id'=>$row['goods_id']))}">{$row.name}</a></strong></td>
+					<td class="col2"> <p>颜色：073深红</p> <p>尺码：170/92A/S</p> </td>
+					<td class="col3">￥<span>{$row.price}</span></td>
+					<td class="col4">
+						<a href="javascript:;" class="reduce_num"></a>
+						<input type="text" name="amount" value="{$row.num}" class="amount" goodsId="{$row.goods_id}"/>
+						<a href="javascript:;" class="add_num"></a>
+					</td>
+					<td class="col5">￥<span>{$row['price']*$row['num']}</span></td>
+					<td class="col6"><a href="{:U('ShoppingCar/remove',array('id'=>$row['goods_id']))}">删除</a></td>
+				</tr>
+			</volist>
+			</tbody>
+			<tfoot>
+			<tr>
+				<td colspan="6">购物金额总计： <strong>￥ <span id="total"></span></strong></td>
+			</tr>
+			</tfoot>
+		</table>
+		<div class="cart_btn w990 bc mt10">
+			<a href="{:U('Index/index')}" class="continue">继续购物</a>
+			<a href="{:U('OrderInfo/add')}" class="checkout">结 算</a>
+		</div>
+	</div>
+	<!-- 主体部分 end -->
+</block>
+<block name="js">
+	<script type="text/javascript" src="__JS__/cart1.js"></script>
+	<script type="text/javascript">
+		$(function(){
+		//*******************************购物金额总计  开始**********************************//
+			var spans=$('.col5 span');
+			var total=0;
+			spans.each(function(){
+				total+=($(this).text()-0);
+			});
+			$('#total').text(total);
+		//*******************************购物金额总计  结束**********************************//
+
+		//*******************************商品数量的改变  开始**********************************//
+
+			//增加数量
+			$('.col4').on('click','.add_num',function(){
+				var num=$(this).prev('input').val();
+				var goods_id=$(this).prev('input').attr('goodsId');
+				$.post("{:U('ShoppingCar/update')}",{num:num,goods_id:goods_id});
+			});
+
+			//减少数量
+			$('.col4').on('click','.reduce_num',function(){
+				var num=$(this).next('input').val();
+				var goods_id=$(this).next('input').attr('goodsId');
+				$.post("{:U('ShoppingCar/update')}",{num:num,goods_id:goods_id});
+			});
+
+
+		//*******************************商品数量的改变  结束**********************************//
+		});
+	</script>
+</block>

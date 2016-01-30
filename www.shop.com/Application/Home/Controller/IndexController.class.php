@@ -81,7 +81,7 @@ class IndexController extends Controller {
 
         //记录最近浏览过得商品
         $historys=cookie('historys');
-        if(empty($historys)){
+        if(empty($historys)||unserialize($historys)===false){
             $historys=array();
         }else{
             $historys = unserialize($historys);

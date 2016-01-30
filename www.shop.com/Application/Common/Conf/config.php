@@ -10,4 +10,18 @@ return array(
     'DB_PARAMS'              => array(), // 数据库连接参数
 
     'DATA_CACHE_TYPE'        => 'Redis',
+
+    //短信应用的配置
+    'SMS_CONFIG'             =>array(
+        'appkey' => '23302770',
+        'secretKey' => 'fb8a8777132bbd851e1a87b8e8a06f2e'
+    ),
+
+    //发送邮件的配置
+    'MAIL_CONFIG'            =>array(
+        'Host'=>            'smtp.126.com', //126服务器的IP地址(域名)
+        'Username'=>        'itsource520@126.com',
+        'Password'=>        'qqitsource520',
+        'From'=>            'itsource520@126.com'   //发件人
+    )
 );
