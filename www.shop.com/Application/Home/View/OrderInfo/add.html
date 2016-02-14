@@ -1,0 +1,472 @@
+<extend name="ShoppingCar/common"/>
+<block name="css">
+	<link rel="stylesheet" href="__CSS__/fillin.css" type="text/css">
+</block>
+<block name="center">
+	<!-- 页面头部 start -->
+	<div class="header w990 bc mt15">
+		<div class="logo w990">
+			<h2 class="fl"><a href="index.html"><img src="__IMG__/logo.png" alt="京西商城"></a></h2>
+			<div class="flow fr flow2">
+				<ul>
+					<li>1.我的购物车</li>
+					<li class="cur">2.填写核对订单信息</li>
+					<li>3.成功提交订单</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 页面头部 end -->
+
+	<div style="clear:both;"></div>
+
+	<!-- 主体部分 start -->
+	<div class="fillin w990 bc mt15">
+		<div class="fillin_hd">
+			<h2>填写并核对订单信息</h2>
+		</div>
+
+		<div class="fillin_bd">
+			<!-- 收货人信息  start-->
+			<div class="address">
+				<h3>收货人信息 <a href="javascript:;" id="address_modify">[修改]</a></h3>
+				<div class="address_info">
+					<p>{$default_address.name}  {$default_address.tel} </p>
+					<p>{$default_address.province_name} {$default_address.city_name} {$default_address.area_name} {$default_address.detail_address} </p>
+				</div>
+
+				<div class="address_select none">
+					<ul>
+						<volist name="addresses" id="address">
+						<li <eq name="address.is_default" value="1">class="cur"</eq>>
+							<input type="radio" name="address" <eq name="address.is_default" value="1">checked="checked"</eq> value="{$address.id}"/>{$address.name} {$address.province_name} {$address.city_name} {$address.area_name} {$address.detail_address} {$address.tel}
+							<eq name="address.is_default" value="1">
+								<span class="default_address"  dbid="{$address.id}">默认地址</span>
+							<else/>
+								<a class="setDefault" dbid="{$address.id}" href="{:U('Address/setDefault')}">设为默认地址</a>
+							</eq>
+							<a class="remove" dbid="{$address.id}" href="{:U('Address/changeStatus')}">删除</a>
+						</li>
+						</volist>
+						<li><input type="radio" name="address" class="new_address"  />使用新地址</li>
+					</ul>
+					<form action="{:U('Address/add')}" method="post" class="none" name="address_form" id="address_form">
+						<ul>
+							<li>
+								<label for=""><span>*</span>收 货 人：</label>
+								<input type="text" name="name" class="txt name" />
+							</li>
+							<li>
+								<label for=""><span>*</span>所在地区：</label>
+								<input type="hidden" name="province_name" id="province_name">
+								<select name="province_id" id="province_id">
+									<option value="">请选择</option>
+									<volist name="provinces" id="province">
+										<option value="{$province.id}">{$province.name}</option>
+									</volist>
+								</select>
+
+								<input type="hidden" name="city_name" id="city_name">
+								<select name="city_id" id="city_id">
+									<option value="">请选择</option>
+								</select>
+
+								<input type="hidden" name="area_name" id="area_name">
+								<select name="area_id" id="area_id">
+									<option value="">请选择</option>
+								</select>
+							</li>
+							<li>
+								<label for=""><span>*</span>详细地址：</label>
+								<input type="text" name="detail_address" class="txt address"  />
+							</li>
+							<li>
+								<label for=""><span>*</span>手机号码：</label>
+								<input type="text" name="tel" class="txt tel" />
+							</li>
+						</ul>
+						<input type="hidden" name="is_default" value="1">
+					</form>
+					<a href="javascript:;" class="confirm_btn submit_a"><span>保存收货人信息</span></a>
+				</div>
+			</div>
+			<!-- 收货人信息  end-->
+			<form method="post" action="{:U('')}">
+				<input type="hidden" name="address_id" id="address_id" value="{$address_default_id.id}"/>
+			<!-- 配送方式 start -->
+			<div class="delivery">
+				<h3>送货方式 <a href="javascript:;" id="delivery_modify">[修改]</a></h3>
+				<div class="delivery_info">
+					<p>普通快递送货上门</p>
+					<p>送货时间不限</p>
+				</div>
+
+				<div class="delivery_select none">
+					<table>
+						<thead>
+						<tr>
+							<th class="col1">送货方式</th>
+							<th class="col2">运费</th>
+							<th class="col3">运费标准</th>
+						</tr>
+						</thead>
+						<tbody>
+
+						<volist name="deliverys" id="delivery">
+						<tr <eq name="i" value="1">class="cur"</eq>>
+							<td>
+								<input type="radio" class="delivery_default" name="delivery" value="{$delivery.id}" value_name="{$delivery.name}" <eq name="delivery.is_default" value="1">checked="checked"</eq> />{$delivery.name}
+								<eq name="delivery.is_time" value="1">
+								<select name="delivery_time" id="">
+									<option value="1" value_name="时间不限">时间不限</option>
+									<option value="2" value_name="工作日，周一到周五">工作日，周一到周五</option>
+									<option value="3" value_name="周六日及公众假期">周六日及公众假期</option>
+								</select>
+								</eq>
+							</td>
+							<td>￥<span>{$delivery.price}</span></td>
+							<td>{$delivery.intro}</td>
+						</tr>
+						</volist>
+						</tbody>
+					</table>
+					<a href="" class="confirm_btn"><span>确认送货方式</span></a>
+				</div>
+			</div>
+			<!-- 配送方式 end -->
+
+			<!-- 支付方式  start-->
+			<div class="pay">
+				<h3>支付方式 <a href="javascript:;" id="pay_modify">[修改]</a></h3>
+				<div class="pay_info">
+					<p>货到付款</p>
+				</div>
+
+				<div class="pay_select none">
+					<table>
+						<volist name="payTypes" id="payType">
+						<tr <eq name="payType.is_default" value="1">class="cur"</eq>>
+							<td class="col1"><input type="radio" name="pay" <eq name="payType.is_default" value="1">checked="checked"</eq> value="{$payType.id}" value_name="{$payType.name}"/>{$payType.name}</td>
+							<td class="col2">{$payType.intro}</td>
+						</tr>
+						</volist>
+					</table>
+					<a href="" class="confirm_btn"><span>确认支付方式</span></a>
+				</div>
+			</div>
+			<!-- 支付方式  end-->
+
+			<!-- 发票信息 start-->
+			<div class="receipt">
+				<h3>发票信息 <a href="javascript:;" id="receipt_modify">[修改]</a></h3>
+				<div class="receipt_info">
+					<p>个人发票</p>
+					<p>内容：明细</p>
+				</div>
+
+				<div class="receipt_select none">
+						<ul>
+							<li>
+								<label for="">发票抬头：</label>
+								<input type="radio" name="type" checked="checked" class="personal" value="1" value_name="个人"/>个人
+								<input type="radio" name="type" class="company" value="2" value_name="单位"/>单位
+								<input type="text" class="txt company_input" disabled="disabled" name="invoice_name"/>
+							</li>
+							<li>
+								<label for="">发票内容：</label>
+								<input type="radio" name="content" checked="checked" value="明细"/>明细
+								<input type="radio" name="content" value="办公用品"/>办公用品
+								<input type="radio" name="content" value="体育休闲"/>体育休闲
+								<input type="radio" name="content" value="耗材"/>耗材
+							</li>
+						</ul>
+
+					<a href="" class="confirm_btn"><span>确认发票信息</span></a>
+				</div>
+			</div>
+			<!-- 发票信息 end-->
+
+			<!-- 商品清单 start -->
+			<div class="goods">
+				<h3>商品清单</h3>
+				<table>
+					<thead>
+					<tr>
+						<th class="col1">商品</th>
+						<th class="col2">规格</th>
+						<th class="col3">价格</th>
+						<th class="col4">数量</th>
+						<th class="col5">小计</th>
+					</tr>
+					</thead>
+					<tbody>
+					<volist name="rows" id="row">
+					<tr>
+						<td class="col1"><a target="_blank" href="{:U('Index/goods',array('id'=>$row['goods_id']))}"><img src="__GOODS__/{$row.logo}!m" alt="" /></a>  <strong><a target="_blank" href="{:U('Index/goods',array('id'=>$row['goods_id']))}">{$row.name}</a></strong></td>
+						<td class="col2"> <p>颜色：073深红</p> <p>尺码：170/92A/S</p> </td>
+						<td class="col3">￥{:number_format($row['price'],2)}</td>
+						<td class="col4"> {$row.num}</td>
+						<td class="col5">￥<span>{:number_format($row['price']*$row['num'],2)}</span></td>
+						<span class="col6" style="display:none;">{$row['price']*$row['num']}</span>
+					</tr>
+					</volist>
+					</tbody>
+					<tfoot>
+					<tr>
+						<td colspan="5">
+							<ul>
+								<li>
+									<span><span id="total_num"></span> 件商品，总商品金额：</span>
+									<em>￥<span id="total_price"></span></em>
+								</li>
+								<li>
+									<span>返现：</span>
+									<em>-￥<span id="return_money"></span></em>
+								</li>
+								<li>
+									<span>运费：</span>
+									<em>￥<span id="carriage"></span></em>
+								</li>
+								<li>
+									<span>应付总额：</span>
+									<em>￥<span class="sum_payable"></span></em>
+								</li>
+							</ul>
+						</td>
+					</tr>
+					</tfoot>
+				</table>
+			</div>
+			<!-- 商品清单 end -->
+			</form>
+		</div>
+		<div class="fillin_ft">
+			<a href=""><span>提交订单</span></a>
+			<p>应付总额：<strong>￥<span class="sum_payable"></span>元</strong></p>
+
+		</div>
+	</div>
+	<!-- 主体部分 end -->
+</block>
+<block name="js">
+	<script type="text/javascript" src="__JS__/cart2.js"></script>
+	<script type="text/javascript" src="__JS__/jquery.form.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.confirm_btn').click(function(){
+				//送货地址
+				$('#address_modify').removeAttr('style') ;
+				$('.address_info').removeAttr('style');
+				$('.address_select').removeAttr('style');
+
+
+
+				//送货方式
+				$('#delivery_modify').removeAttr('style');
+				$('.delivery_info').removeAttr('style');
+				$('.delivery_select').removeAttr('style');
+
+				var delivery=$('.delivery_select').find('input:checked').attr('value_name');
+				var is_time=$('.delivery_select').find('input:checked').next('select');
+				var selected=$('.delivery_select').find('option:selected').attr('value_name');
+				var html='<p>'+delivery+'</p>';
+				if(is_time.length===1){
+					html='<p>'+delivery+'</p><p>送货'+selected+'</p>'
+					$('.delivery_info>p').replaceWith($(html));
+				}else{
+					$('.delivery_info>p').replaceWith($(html));
+				}
+				//更改送货方式后自动更改运费
+				var carriage=$('.delivery_select').find('tr[class="cur"] span').text();
+				$('#carriage').text(carriage);
+				//更改送货方式后自动更改应付总额
+				var sum_payable=(total_price-0)-(return_money-0)+(carriage-0);
+				$('.sum_payable').text(sum_payable.toFixed(2));
+
+				//支付方式
+				$('#pay_modify').removeAttr('style');
+				$('.pay_info').removeAttr('style');
+				$('.pay_select').removeAttr('style');
+
+				var pay=$('.pay_select').find('input:checked').attr('value_name');
+				$('.pay_info>p').replaceWith('<p>'+pay+'</p>');
+
+				//发票信息
+				var invoice_type=$($('.receipt_select').find('input:checked').get(0)).attr('value_name');
+				if(invoice_type=='单位'){
+					var company_input=$('.company_input').val();
+				}
+				var invoice_content=$('.receipt_select').find('input:checked').get(1).value;
+				var html='<p>'+invoice_type+'发票</p>\
+						<p>内容：'+invoice_content+'</p>';
+				var html2='<p>'+invoice_type+'发票：'+company_input+'</p>\
+						<p>内容：'+invoice_content+'</p>';
+				if(invoice_type=='单位'){
+					$('.receipt_info>p').replaceWith($(html2));
+				}else{
+					$('.receipt_info>p').replaceWith($(html));
+				}
+				$('#receipt_modify').removeAttr('style');
+				$('.receipt_info').removeAttr('style');
+				$('.receipt_select').removeAttr('style');
+
+				return false;
+			});
+
+			//*********************************地区三级联动   开始**************************************//
+			$('#province_id').change(function () {
+				$('#province_name').val($(this).find('option:selected').text());
+				loadChild.call(this, 'city_id');
+				$('#area_id').get(0).length = 1;
+			});
+
+			$('#city_id').change(function () {
+				$('#city_name').val($(this).find('option:selected').text());
+				loadChild.call(this, 'area_id');
+			});
+
+			$('#area_id').change(function () {
+				$('#area_name').val($(this).find('option:selected').text());
+			});
+
+			function loadChild(target) {
+				var parent_id = $(this).val();
+				$.post("{:U('Area/getChildByParentId')}", {parent_id: parent_id}, function (data) {
+					$(data).each(function () {
+						$('<option value="' + this.id + '">' + this.name + '</option>').appendTo('#' + target);
+					});
+				});
+				$('#' + target).get(0).length = 1;
+			};
+			//*********************************地区三级联动   结束**************************************//
+
+			//*********************************表单提交   开始**************************************//
+				$(".submit_a").click(function () {
+					if($('.new_address').attr('checked')=='checked') {
+						$("#address_form").ajaxSubmit(function (data) {
+							var id=data.info;
+							$('#address_id').val(id);
+							//找到之前默认的地址改为非默认地址
+							var default_id=$('.default_address').attr('dbid');
+							$('.default_address').replaceWith('<a class="setDefault" dbid="'+default_id+'" href="{:U('Address/setDefault')}">设为默认地址</a>')
+
+							var name = $('.name').val();
+							var province_name = $('#province_name').val();
+							var city_name = $('#city_name').val();
+							var area_name = $('#area_name').val();
+							var address = $('.address').val();
+							var tel = $('.tel').val();
+							var html = '<li class="cur"><input type="radio" name="address" checked="checked"/>' + name + ' ' + province_name + ' ' + city_name + ' ' + area_name + ' ' + address + ' ' + tel + '\
+								<span class="default_address"  dbid="'+id+'">默认地址</span>\
+								<a class="remove" dbid="'+id+'" href="{:U('Address/changeStatus')}">删除</a></li>';
+
+							$('.new_address').closest('li').before(html);
+							$('.new_address').closest('li').removeClass('cur');
+							//清空表单中的信息
+							$('#address_form').resetForm();
+
+							$('#address_form').attr('style','display: none;');
+
+							//提交新地址
+							$('.address_info>p').replaceWith($('<p>'+name+'  '+tel+' </p><p>'+province_name+' '+city_name+' '+area_name+' '+address+' </p>'));
+						});
+					}else{
+						var show_id=$('.address_select>ul').find('input:checked').next().attr('dbid');
+						$.post('{:U("Address/getAddressById")}',{id:show_id},function(data){
+							var show_name = data.name;
+							var show_province_name = data.province_name;
+							var show_city_name = data.city_name;
+							var show_area_name = data.area_name;
+							var show_address = data.detail_address;
+							var show_tel = data.tel;
+							$('.address_info>p').replaceWith($('<p>'+show_name+'  '+show_tel+' </p><p>'+show_province_name+' '+show_city_name+' '+show_area_name+' '+show_address+' </p>'));
+						});
+						var address_id=$('.address_select>ul').find('input:checked').val();
+						$('#address_id').val(address_id);
+					}
+					return false;
+
+				});
+			//*********************************表单提交   结束**************************************//
+			$('.address_select').on('click',$('.address_select>ul').children('li').find('input'),function(){
+				if($('.address_select>ul').find('input:checked').attr('class')!='new_address'){
+					$("form[name=address_form]").hide();
+				}
+			});
+			//*********************************设置默认地址   开始**************************************//
+			$('.address_select').on('click','.setDefault',function(){
+				var that=$(this);
+				var id=that.attr('dbid');
+				var url=that.attr('href');
+				$.post(url,{id:id},function(data){
+					if(data.status){
+						//将之前默认的改为非默认
+						var dbid=$('.default_address').attr('dbid');
+						$('.default_address').closest('li').removeClass('cur');
+
+						$('.default_address').replaceWith('<a class="setDefault" dbid="'+dbid+'" href="{:U('Address/setDefault')}">设为默认地址</a>');
+
+						//将即将默认的改为默认状态
+						that.replaceWith('<span class="default_address"  dbid="'+id+'">默认地址</span>');
+						$('.default_address').closest('li').addClass('cur');
+						$('.default_address').prev('input').prop("checked", true);
+					}
+				});
+				return false;
+			});
+			//*********************************设置默认地址   结束**************************************//
+
+			//*********************************删除地址   开始**************************************//
+			$('.address_select').on('click','.remove',function(){
+				var that=$(this);
+				var id=that.attr('dbid');
+				var url=that.attr('href');
+				$.post(url,{id:id},function(data){
+					if(data.status){
+						that.closest('li').remove();
+						if($('.address_select>ul').find('input:checked').length==0){
+							$('.address_select>ul').find('li').first().addClass('cur');
+							$('.address_select>ul').find('li').first().find('input').prop('checked',true);
+						}
+					}
+				});
+				return false;
+			});
+			//*********************************删除地址   结束**************************************//
+
+			//*********************************计算商品相关信息   开始**************************************//
+			//商品总数
+			var total_num=0;
+			$('.col4:gt(0)').each(function(){
+				total_num+=(this.innerText-0);
+			});
+			$('#total_num').text(total_num);
+
+			//商品总额
+			var total_price=0;
+			$('.col6').each(function(){
+				total_price+=(this.innerText-0);
+			});
+			$('#total_price').text(total_price.toFixed(2));
+
+			//返现
+			var return_money=0;
+			$('#return_money').text(return_money.toFixed(2));
+
+			//运费
+			var carriage=$('.delivery_select').find('tr[class="cur"] span').text();
+			$('#carriage').text(carriage);
+
+			//应付总额
+			var sum_payable=(total_price-0)-(return_money-0)+(carriage-0);
+			$('.sum_payable').text(sum_payable.toFixed(2));
+			//*********************************计算商品总数   结束**************************************//
+
+			$('.fillin_ft a').click(function(){
+				document.forms[1].submit();   //提交表单
+
+				return false; //取消默认操作
+			});
+		});
+	</script>
+</block>

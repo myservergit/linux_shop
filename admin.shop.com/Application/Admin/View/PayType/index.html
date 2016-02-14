@@ -1,0 +1,24 @@
+<extend name="Common/index"/>
+<block name="list">
+    <div class="list-div" id="listDiv">
+        <table cellpadding="3" cellspacing="1">
+            <tr>
+                <th>ID<input type="checkbox" class="checked_all"></th>
+                <th>支付方式名称</th><th>简介</th><th>是否默认</th><th>是否显示</th>                <th>操作</th>
+            </tr>
+            <volist name="rows" id="row">
+                <tr>
+                    <td width="50px">{$row.id}<input type="checkbox" name="id[]" value="{$row.id}" class="ids"></td>
+                    <td class="first-cell"><span>{$row.name}</span></td><td align='center'>{$row.intro}</td><td align='center'>{$row.is_default}</td><td align="center"><a class="ajax_get" href="{:U('changeStatus',array('id'=>$row['id'],'status'=>1-$row['status']))}"><img src="__IMG__/{$row.status}.gif"/></a></td>                    <td align="center">
+                        <a href="{:U('edit',array('id'=>$row['id']))}">编辑</a> |
+                        <a class='ajax_get' href="{:U('changeStatus',array('id'=>$row['id']))}">移除</a>
+                    </td>
+                </tr>
+            </volist>
+        </table>
+        <div id="turn-page" class="page">
+            {$pageHtml}
+        </div>
+        <!-- end brand list -->
+    </div>
+</block>

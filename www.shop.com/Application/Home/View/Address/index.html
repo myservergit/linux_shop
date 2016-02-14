@@ -1,0 +1,288 @@
+<extend name="Index/common"/>
+<block name="css">
+    <link rel="stylesheet" href="__CSS__/home.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/address.css" type="text/css">
+</block>
+<block name="center">
+    <!-- 页面主体 start -->
+    <div class="main w1210 bc mt10">
+        <div class="crumb w1210">
+            <h2><strong>我的XX </strong><span>> 我的订单</span></h2>
+        </div>
+
+        <!-- 左侧导航菜单 start -->
+        <div class="menu fl">
+            <h3>我的XX</h3>
+
+            <div class="menu_wrap">
+                <dl>
+                    <dt>订单中心 <b></b></dt>
+                    <dd><b>.</b><a href="">我的订单</a></dd>
+                    <dd><b>.</b><a href="">我的关注</a></dd>
+                    <dd><b>.</b><a href="">浏览历史</a></dd>
+                    <dd><b>.</b><a href="">我的团购</a></dd>
+                </dl>
+
+                <dl>
+                    <dt>账户中心 <b></b></dt>
+                    <dd class="cur"><b>.</b><a href="">账户信息</a></dd>
+                    <dd><b>.</b><a href="">账户余额</a></dd>
+                    <dd><b>.</b><a href="">消费记录</a></dd>
+                    <dd><b>.</b><a href="">我的积分</a></dd>
+                    <dd><b>.</b><a href="">收货地址</a></dd>
+                </dl>
+
+                <dl>
+                    <dt>订单中心 <b></b></dt>
+                    <dd><b>.</b><a href="">返修/退换货</a></dd>
+                    <dd><b>.</b><a href="">取消订单记录</a></dd>
+                    <dd><b>.</b><a href="">我的投诉</a></dd>
+                </dl>
+            </div>
+        </div>
+        <!-- 左侧导航菜单 end -->
+
+        <!-- 右侧内容区域 start -->
+        <div class="content fl ml10">
+            <div class="address_hd">
+                <h3>收货地址薄</h3>
+                <volist name="addresses" id="address">
+                <dl <if condition="$i eq count($addresses)">class="last"</if>>
+                    <dt>{$i}.{$address.name} {$address.province_name} {$address.city_name} {$address.area_name} {$address.detail_address} {$address.tel}</dt>
+                    <dd>
+                        <a class="edit" dbid="{$address.id}" href="{:U('Address/edit')}">修改</a>
+                        <a class="remove" dbid="{$address.id}" href="{:U('Address/changeStatus')}">删除</a>
+                        <eq name="address.is_default" value="1">
+                            <span class="default_address"  dbid="{$address.id}">默认地址</span>
+                        <else/>
+                            <a class="setDefault" dbid="{$address.id}" href="{:U('Address/setDefault')}">设为默认地址</a>
+                        </eq>
+
+                    </dd>
+                </dl>
+                </volist>
+            </div>
+
+            <div class="address_bd mt10">
+                <h4>新增/修改收货地址</h4>
+
+                <form action="{:U('add')}" method="post" name="address_form" id="address_form">
+                    <ul>
+                        <li>
+                            <label for=""><span>*</span>收 货 人：</label>
+                            <input type="text" name="name" class="txt name"/>
+                        </li>
+                        <li>
+                            <label for=""><span>*</span>所在地区：</label>
+                            <input type="hidden" name="province_name" id="province_name">
+                            <select name="province_id" id="province_id">
+                                <option value="">请选择</option>
+                                <volist name="provinces" id="province">
+                                    <option value="{$province.id}">{$province.name}</option>
+                                </volist>
+                            </select>
+
+                            <input type="hidden" name="city_name" id="city_name">
+                            <select name="city_id" id="city_id">
+                                <option value="">请选择</option>
+                            </select>
+
+                            <input type="hidden" name="area_name" id="area_name">
+                            <select name="area_id" id="area_id">
+                                <option value="">请选择</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for=""><span>*</span>详细地址：</label>
+                            <input type="text" name="detail_address" class="txt address"/>
+                        </li>
+                        <li>
+                            <label for=""><span>*</span>手机号码：</label>
+                            <input type="text" name="tel" class="txt tel"/>
+                        </li>
+                        <li>
+                            <label for="">&nbsp;</label>
+                            <input type="checkbox" name="is_default" class="check is_default" value="1"/>设为默认地址
+                        </li>
+                        <li>
+                            <label for="">&nbsp;</label>
+                            <input type="hidden" name="id" class="id">
+                            <input type="submit" name="" class="btn" value="保存"/>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+
+        </div>
+        <!-- 右侧内容区域 end -->
+    </div>
+    <!-- 页面主体 end-->
+</block>
+<block name="js">
+    <script type="text/javascript" src="__JS__/home.js"></script>
+    <script type="text/javascript" src="__JS__/jquery.form.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //*********************************地区三级联动   开始**************************************//
+            $('#province_id').change(function () {
+                $('#province_name').val($(this).find('option:selected').text());
+                loadChild.call(this, 'city_id');
+                $('#area_id').get(0).length = 1;
+            });
+
+            $('#city_id').change(function () {
+                $('#city_name').val($(this).find('option:selected').text());
+                loadChild.call(this, 'area_id');
+            });
+
+            $('#area_id').change(function () {
+                $('#area_name').val($(this).find('option:selected').text());
+            });
+
+            function loadChild(target) {
+                var parent_id = $(this).val();
+                $.post("{:U('Area/getChildByParentId')}", {parent_id: parent_id}, function (data) {
+                    $(data).each(function () {
+                        $('<option value="' + this.id + '">' + this.name + '</option>').appendTo('#' + target);
+                    });
+                });
+                $('#' + target).get(0).length = 1;
+            };
+            //*********************************地区三级联动   结束**************************************//
+
+            //*********************************表单提交   开始**************************************//
+            $("#address_form").submit(function () {
+                $(this).ajaxSubmit(function(data){
+                    var num=($('.address_hd').children('dl').length)+1;
+                    var id=data.info;
+                    var name=$('.name').val();
+                    var province_name=$('#province_name').val();
+                    var city_name=$('#city_name').val();
+                    var area_name=$('#area_name').val();
+                    var address=$('.address').val();
+                    var tel=$('.tel').val();
+                    var is_default=$('.is_default').attr('checked');
+                    var html='<dl class="last">\
+                            <dt>'+num+'.'+name+' '+province_name+' '+city_name+' '+area_name+' '+address+' '+tel+'</dt>\
+                    <dd>\
+                    <a class="edit" dbid="'+id+'" href="{:U('Address/edit')}">修改</a>\
+                    <a class="remove" dbid="'+id+'" href="{:U('Address/changeStatus')}">删除</a>\
+                    <a class="setDefault" dbid="'+id+'" href="{:U('Address/setDefault')}">设为默认地址</a>\
+                            </dd>\
+                            </dl>';
+
+                    var html2='<dl class="last">\
+                            <dt>'+num+'.'+name+' '+province_name+' '+city_name+' '+area_name+' '+address+' '+tel+'</dt>\
+                    <dd>\
+                    <a class="edit" dbid="'+id+'" href="{:U('Address/edit')}">修改</a>\
+                    <a class="remove" dbid="'+id+'" href="{:U('Address/remove')}">删除</a>\
+                    <span class="default_address"  dbid="'+id+'">默认地址</span>\
+                            </dd>\
+                            </dl>';
+
+                    if(window.lastEditDl){
+                        if(is_default=='checked'){
+                            $(html2).replaceAll(window.lastEditDl);
+                        }else{
+                            $(html).replaceAll(window.lastEditDl);
+                        }
+                        window.lastEditDl=null;
+                        $('.id').val('');
+                    }else{
+                        $('.address_hd').find('dl[class="last"]').removeAttr('class');
+                        if(is_default=='checked'){
+                            //将之前默认的改为非默认
+                            var dbid=$('.default_address').attr('dbid');
+                            $('.default_address').replaceWith('<a class="setDefault" dbid="'+dbid+'" href="{:U('Address/setDefault')}">设为默认地址</a>');
+
+                            $(html2).appendTo('.address_hd');
+                        }else{
+                            $(html).appendTo('.address_hd');
+                        }
+                    }
+
+                    //清空表单中的信息
+                    $('#address_form').resetForm();
+                });
+
+                return false;
+
+            });
+            //*********************************表单提交   结束**************************************//
+
+            //*********************************设置默认地址   开始**************************************//
+            $('.address_hd').on('click','.setDefault',function(){
+                var that=$(this);
+                var id=that.attr('dbid');
+                var url=that.attr('href');
+                $.post(url,{id:id},function(data){
+                    if(data.status){
+                        //将之前默认的改为非默认
+                        var dbid=$('.default_address').attr('dbid');
+                        $('.default_address').replaceWith('<a class="setDefault" dbid="'+dbid+'" href="{:U('Address/setDefault')}">设为默认地址</a>');
+
+                        //将即将默认的改为默认状态
+                        that.replaceWith('<span class="default_address"  dbid="'+id+'">默认地址</span>');
+                    }
+                });
+                return false;
+            });
+            //*********************************设置默认地址   结束**************************************//
+
+            //*********************************删除地址   开始**************************************//
+            $('.address_hd').on('click','.remove',function(){
+                var that=$(this);
+                var id=that.attr('dbid');
+                var url=that.attr('href');
+                $.post(url,{id:id},function(data){
+                    if(data.status){
+                        that.closest('dl').remove();
+                        $('.address_hd').find('dl').last().addClass('last');
+                    }
+                });
+                return false;
+            });
+            //*********************************删除地址   结束**************************************//
+
+            //*********************************修改地址   开始**************************************//
+            $('.address_hd').on('click','.edit',function(){
+                var that=$(this);
+                var id=that.attr('dbid');
+                var url=that.attr('href');
+                $.get(url,{id:id},function(data){
+                    if(data.status){
+                        $('.name').val(data.name);
+                        $('.address').val(data.detail_address);
+                        $('.tel').val(data.tel);
+                        $('.is_default').val([data.is_default]);
+                        $('.id').val(id);
+
+                        $('#province_id').val(data.province_id);
+                        $('#province_name').val(data.province_name);
+
+                        $.post('{:U("Area/getChildByParentId")}',{parent_id:data.province_id},function(rows){
+                            $(rows).each(function () {
+                                $('<option value="' + this.id + '">' + this.name + '</option>').appendTo('#city_id');
+                            });
+                            $('#city_id').val(data.city_id);
+                            $('#city_name').val(data.city_name);
+                        });
+
+                        $.post('{:U("Area/getChildByParentId")}',{parent_id:data.city_id},function(rows){
+                            $(rows).each(function () {
+                                $('<option value="' + this.id + '">' + this.name + '</option>').appendTo('#area_id');
+                            });
+                            $('#area_id').val(data.area_id);
+                            $('#area_name').val(data.area_name);
+                        });
+
+                    }
+                });
+                window.lastEditDl = $(this).closest('dl');
+                return false;
+            });
+
+            //*********************************修改地址   结束**************************************//
+        });
+    </script>
+</block>

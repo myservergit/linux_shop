@@ -10,7 +10,6 @@ $(function(){
 		$(".address_info").hide();
 		$(".address_select").show();
 	});
-
 	$(".new_address").click(function(){
 		$("form[name=address_form]").show();
 		$(this).parent().addClass("cur").siblings().removeClass("cur");

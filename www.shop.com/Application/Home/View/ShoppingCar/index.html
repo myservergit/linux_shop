@@ -92,7 +92,11 @@
 				$.post("{:U('ShoppingCar/update')}",{num:num,goods_id:goods_id});
 			});
 
-
+			$('.col4').on('change','.amount',function(){
+				var num=$(this).val();
+				var goods_id=$(this).attr('goodsId');
+				$.post("{:U('ShoppingCar/update')}",{num:num,goods_id:goods_id});
+			});
 		//*******************************商品数量的改变  结束**********************************//
 		});
 	</script>

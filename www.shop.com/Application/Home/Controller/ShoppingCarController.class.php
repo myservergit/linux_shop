@@ -16,9 +16,10 @@ class ShoppingCarController extends Controller {
      * 购物车页面的数据展示页面
      */
     public function index() {
-        $ShoppingCarModel=D('ShoppingCar');
-        $rows=$ShoppingCarModel->getList();
-        $this->assign('rows',$rows);
+        $ShoppingCarModel = D('ShoppingCar');
+        $rows = $ShoppingCarModel->getList();
+        $this->assign('rows', $rows);
+        $this->assign('meta_title', '购物车页面');
         $this->display('index');
     }
 
@@ -33,6 +34,7 @@ class ShoppingCarController extends Controller {
             $this->error('添加失败');
         }
     }
+
     /**
      * 删除购物车中的商品
      */
@@ -49,9 +51,9 @@ class ShoppingCarController extends Controller {
      * 购物车中商品的数量改变
      * @return bool
      */
-    public function update(){
+    public function update() {
         $shoppingCarModel = D('ShoppingCar');
-        if($shoppingCarModel->update(I('post.'))===false){
+        if ($shoppingCarModel->update(I('post.')) === false) {
             return false;
         }
     }
