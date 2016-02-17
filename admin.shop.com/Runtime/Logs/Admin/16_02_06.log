@@ -1,0 +1,751 @@
+[ 2016-02-06T15:20:00+08:00 ] 192.168.1.99 /Admin/Gii/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001258s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.007253s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007907s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000073s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.299160s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.314609s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002987s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004435s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003252s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004325s ]
+
+[ 2016-02-06T15:20:12+08:00 ] 192.168.1.99 /index.php/Admin/Gii/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000145s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001104s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001213s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001558s ]
+SQL: SELECT table_comment FROM information_schema.`TABLES` WHERE table_schema='shop' AND table_name='delivery' [ RunTime:0.0024s ]
+SQL: SHOW FULL COLUMNS FROM delivery [ RunTime:0.0040s ]
+NOTIC: [8] Undefined index: field_type /home/www/shop/admin.shop.com/Template/edit.tpl 第 11 行.
+NOTIC: [8] Undefined index: field_type /home/www/shop/admin.shop.com/Template/edit.tpl 第 13 行.
+NOTIC: [8] Undefined index: field_type /home/www/shop/admin.shop.com/Template/edit.tpl 第 19 行.
+NOTIC: [8] Undefined index: field_type /home/www/shop/admin.shop.com/Template/edit.tpl 第 11 行.
+NOTIC: [8] Undefined index: field_type /home/www/shop/admin.shop.com/Template/edit.tpl 第 13 行.
+NOTIC: [8] Undefined index: field_type /home/www/shop/admin.shop.com/Template/edit.tpl 第 19 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000280s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000431s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017061s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017481s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000934s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001298s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002314s ]
+
+[ 2016-02-06T15:20:13+08:00 ] 192.168.1.99 /index.php/Admin/Gii/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000444s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001992s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002486s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003568s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.003856s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019684s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019918s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000094s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000158s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001132s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002014s ]
+
+[ 2016-02-06T15:20:29+08:00 ] 192.168.1.99 /index.php/Admin/Delivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000115s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001114s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000207s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000283s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0044s ]
+SQL: SELECT COUNT(*) AS tp_count FROM delivery obj WHERE obj.status > -1 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM delivery obj WHERE obj.status > -1 LIMIT 0,2   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000137s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000413s ]
+NOTIC: [8] Undefined index: keyword /home/www/shop/admin.shop.com/Runtime/Cache/Admin/5232c1c1a2156495182d0886b7b5ef1f.php 第 26 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.081083s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.081418s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000568s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001506s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001071s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001650s ]
+
+[ 2016-02-06T15:20:37+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000103s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001376s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001061s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001604s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0039s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000670s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000922s ]
+NOTIC: [8] Undefined variable: name /home/www/shop/admin.shop.com/Runtime/Cache/Admin/a20ca3f08137331b33feb8ef46419927.php 第 29 行.
+NOTIC: [8] Undefined variable: price /home/www/shop/admin.shop.com/Runtime/Cache/Admin/a20ca3f08137331b33feb8ef46419927.php 第 35 行.
+NOTIC: [8] Undefined variable: intro /home/www/shop/admin.shop.com/Runtime/Cache/Admin/a20ca3f08137331b33feb8ef46419927.php 第 47 行.
+NOTIC: [8] Undefined variable: id /home/www/shop/admin.shop.com/Runtime/Cache/Admin/a20ca3f08137331b33feb8ef46419927.php 第 63 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014741s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015011s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001427s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001639s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001733s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001999s ]
+
+[ 2016-02-06T15:21:38+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000965s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001331s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001838s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0011s ]
+SQL: INSERT INTO `delivery` (`name`,`price`,`is_time`,`intro`,`is_default`,`status`,`id`) VALUES ('普通快递送货上门','10','1','每张订单不满499.00元,运费15.00元, 订单4...','1','1','0') [ RunTime:0.0030s ]
+
+[ 2016-02-06T15:21:40+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000981s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001878s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002213s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0026s ]
+SQL: SELECT COUNT(*) AS tp_count FROM delivery obj WHERE obj.status > -1 LIMIT 1   [ RunTime:0.0051s ]
+SQL: SELECT * FROM delivery obj WHERE obj.status > -1 LIMIT 0,2   [ RunTime:0.0074s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000029s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001953s ]
+NOTIC: [8] Undefined index: keyword /home/www/shop/admin.shop.com/Runtime/Cache/Admin/5232c1c1a2156495182d0886b7b5ef1f.php 第 26 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019283s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019422s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000415s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000656s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000340s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000566s ]
+
+[ 2016-02-06T15:21:42+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/changeStatus/id/1/status/0.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000950s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001655s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001818s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0021s ]
+SQL: UPDATE `delivery` SET `status`='0' WHERE `id` IN ('1') [ RunTime:0.0021s ]
+
+[ 2016-02-06T15:21:43+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000126s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003869s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005015s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM delivery obj WHERE obj.status > -1 LIMIT 1   [ RunTime:0.0028s ]
+SQL: SELECT * FROM delivery obj WHERE obj.status > -1 LIMIT 0,2   [ RunTime:0.0024s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000914s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001342s ]
+NOTIC: [8] Undefined index: keyword /home/www/shop/admin.shop.com/Runtime/Cache/Admin/5232c1c1a2156495182d0886b7b5ef1f.php 第 26 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020658s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021064s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000832s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001127s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001597s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001989s ]
+
+[ 2016-02-06T15:21:44+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/changeStatus/id/1/status/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000120s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000227s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001139s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001797s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0039s ]
+SQL: UPDATE `delivery` SET `status`='1' WHERE `id` IN ('1') [ RunTime:0.0012s ]
+
+[ 2016-02-06T15:21:45+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000162s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002860s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003264s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0032s ]
+SQL: SELECT COUNT(*) AS tp_count FROM delivery obj WHERE obj.status > -1 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT * FROM delivery obj WHERE obj.status > -1 LIMIT 0,2   [ RunTime:0.0009s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000048s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001433s ]
+NOTIC: [8] Undefined index: keyword /home/www/shop/admin.shop.com/Runtime/Cache/Admin/5232c1c1a2156495182d0886b7b5ef1f.php 第 26 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019189s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019399s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000657s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001110s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001461s ]
+
+[ 2016-02-06T15:21:49+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000080s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000993s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001703s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001880s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000592s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000895s ]
+NOTIC: [8] Undefined variable: name /home/www/shop/admin.shop.com/Runtime/Cache/Admin/a20ca3f08137331b33feb8ef46419927.php 第 29 行.
+NOTIC: [8] Undefined variable: price /home/www/shop/admin.shop.com/Runtime/Cache/Admin/a20ca3f08137331b33feb8ef46419927.php 第 35 行.
+NOTIC: [8] Undefined variable: intro /home/www/shop/admin.shop.com/Runtime/Cache/Admin/a20ca3f08137331b33feb8ef46419927.php 第 47 行.
+NOTIC: [8] Undefined variable: id /home/www/shop/admin.shop.com/Runtime/Cache/Admin/a20ca3f08137331b33feb8ef46419927.php 第 63 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019189s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019351s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000058s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000098s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000666s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000799s ]
+
+[ 2016-02-06T15:22:13+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000035s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000394s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000724s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000916s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0027s ]
+SQL: INSERT INTO `delivery` (`name`,`price`,`is_time`,`intro`,`is_default`,`status`,`id`) VALUES ('特快专递','40','0','	每张订单不满499.00元,运费40.00元, 订单4...','0','1','0') [ RunTime:0.0022s ]
+
+[ 2016-02-06T15:22:14+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000078s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000917s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000028s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000101s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM delivery obj WHERE obj.status > -1 LIMIT 1   [ RunTime:0.0033s ]
+SQL: SELECT * FROM delivery obj WHERE obj.status > -1 LIMIT 0,2   [ RunTime:0.0014s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000160s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000810s ]
+NOTIC: [8] Undefined index: keyword /home/www/shop/admin.shop.com/Runtime/Cache/Admin/5232c1c1a2156495182d0886b7b5ef1f.php 第 26 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013237s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013738s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000455s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000752s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000549s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000839s ]
+
+[ 2016-02-06T15:22:15+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/edit/id/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000258s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `delivery` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0012s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000890s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001128s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013619s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013847s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000369s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000468s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001088s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001203s ]
+
+[ 2016-02-06T15:22:18+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/edit.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000086s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000794s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000807s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001064s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0023s ]
+SQL: UPDATE `delivery` SET `name`='特快专递',`price`='40.00',`intro`='每张订单不满499.00元,运费40.00元, 订单4...',`status`='1' WHERE `id` = 2 [ RunTime:0.0024s ]
+
+[ 2016-02-06T15:22:19+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000088s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001042s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000043s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000072s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM delivery obj WHERE obj.status > -1 LIMIT 1   [ RunTime:0.0035s ]
+SQL: SELECT * FROM delivery obj WHERE obj.status > -1 LIMIT 0,2   [ RunTime:0.0019s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000193s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000599s ]
+NOTIC: [8] Undefined index: keyword /home/www/shop/admin.shop.com/Runtime/Cache/Admin/5232c1c1a2156495182d0886b7b5ef1f.php 第 26 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014288s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014557s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000714s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001227s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001174s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001407s ]
+
+[ 2016-02-06T15:22:20+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000193s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001049s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000081s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000135s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000182s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001867s ]
+NOTIC: [8] Undefined variable: name /home/www/shop/admin.shop.com/Runtime/Cache/Admin/a20ca3f08137331b33feb8ef46419927.php 第 29 行.
+NOTIC: [8] Undefined variable: price /home/www/shop/admin.shop.com/Runtime/Cache/Admin/a20ca3f08137331b33feb8ef46419927.php 第 35 行.
+NOTIC: [8] Undefined variable: intro /home/www/shop/admin.shop.com/Runtime/Cache/Admin/a20ca3f08137331b33feb8ef46419927.php 第 47 行.
+NOTIC: [8] Undefined variable: id /home/www/shop/admin.shop.com/Runtime/Cache/Admin/a20ca3f08137331b33feb8ef46419927.php 第 63 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013747s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013983s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000792s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001261s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000922s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001196s ]
+
+[ 2016-02-06T15:22:44+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000125s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000886s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000911s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001126s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0047s ]
+SQL: INSERT INTO `delivery` (`name`,`price`,`is_time`,`intro`,`is_default`,`status`,`id`) VALUES ('加急快递送货上门','40','0','每张订单不满499.00元,运费40.00元, 订单4...','0','1','0') [ RunTime:0.0014s ]
+
+[ 2016-02-06T15:22:45+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001236s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM delivery obj WHERE obj.status > -1 LIMIT 1   [ RunTime:0.0040s ]
+SQL: SELECT * FROM delivery obj WHERE obj.status > -1 LIMIT 0,2   [ RunTime:0.0030s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000167s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001620s ]
+NOTIC: [8] Undefined index: keyword /home/www/shop/admin.shop.com/Runtime/Cache/Admin/5232c1c1a2156495182d0886b7b5ef1f.php 第 26 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025542s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025843s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000990s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001754s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000942s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001157s ]
+
+[ 2016-02-06T15:22:47+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000107s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002894s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001714s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001899s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0021s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000780s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001188s ]
+NOTIC: [8] Undefined variable: name /home/www/shop/admin.shop.com/Runtime/Cache/Admin/a20ca3f08137331b33feb8ef46419927.php 第 29 行.
+NOTIC: [8] Undefined variable: price /home/www/shop/admin.shop.com/Runtime/Cache/Admin/a20ca3f08137331b33feb8ef46419927.php 第 35 行.
+NOTIC: [8] Undefined variable: intro /home/www/shop/admin.shop.com/Runtime/Cache/Admin/a20ca3f08137331b33feb8ef46419927.php 第 47 行.
+NOTIC: [8] Undefined variable: id /home/www/shop/admin.shop.com/Runtime/Cache/Admin/a20ca3f08137331b33feb8ef46419927.php 第 63 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.035033s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035180s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000072s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000120s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001908s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002133s ]
+
+[ 2016-02-06T15:23:03+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000189s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001050s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001256s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0037s ]
+SQL: INSERT INTO `delivery` (`name`,`price`,`is_time`,`intro`,`is_default`,`status`,`id`) VALUES ('平邮','10','0','	每张订单不满499.00元,运费15.00元, 订单4...确认送货方式','0','1','0') [ RunTime:0.0026s ]
+
+[ 2016-02-06T15:23:04+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000479s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001491s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001220s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001484s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0016s ]
+SQL: SELECT COUNT(*) AS tp_count FROM delivery obj WHERE obj.status > -1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM delivery obj WHERE obj.status > -1 LIMIT 0,2   [ RunTime:0.0032s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001007s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002487s ]
+NOTIC: [8] Undefined index: keyword /home/www/shop/admin.shop.com/Runtime/Cache/Admin/5232c1c1a2156495182d0886b7b5ef1f.php 第 26 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020208s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021317s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001125s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001642s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000124s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000207s ]
+
+[ 2016-02-06T15:23:05+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/index/p/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001093s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001373s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0001s ]
+SQL: SELECT COUNT(*) AS tp_count FROM delivery obj WHERE obj.status > -1 LIMIT 1   [ RunTime:0.0026s ]
+SQL: SELECT * FROM delivery obj WHERE obj.status > -1 LIMIT 2,2   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001031s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002130s ]
+NOTIC: [8] Undefined index: keyword /home/www/shop/admin.shop.com/Runtime/Cache/Admin/5232c1c1a2156495182d0886b7b5ef1f.php 第 26 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021216s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021869s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001012s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001644s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001593s ]
+
+[ 2016-02-06T15:23:07+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/edit/id/4.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000095s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001236s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001082s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001142s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0026s ]
+SQL: SELECT * FROM `delivery` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0037s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000313s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000568s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012895s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013100s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000681s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001647s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001856s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002139s ]
+
+[ 2016-02-06T15:23:12+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/edit.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000122s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000810s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000262s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000354s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0033s ]
+SQL: UPDATE `delivery` SET `name`='平邮',`price`='10.00',`intro`='每张订单不满499.00元,运费15.00元, 订单4...确认送货方式',`status`='1' WHERE `id` = 4 [ RunTime:0.0026s ]
+
+[ 2016-02-06T15:23:13+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/index/p/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000381s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001093s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001442s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0034s ]
+SQL: SELECT COUNT(*) AS tp_count FROM delivery obj WHERE obj.status > -1 LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT * FROM delivery obj WHERE obj.status > -1 LIMIT 2,2   [ RunTime:0.0038s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000565s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001393s ]
+NOTIC: [8] Undefined index: keyword /home/www/shop/admin.shop.com/Runtime/Cache/Admin/5232c1c1a2156495182d0886b7b5ef1f.php 第 26 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022940s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023102s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000180s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000302s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000620s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000813s ]
+
+[ 2016-02-06T15:25:49+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/edit/id/4.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000083s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001640s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000093s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000224s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `delivery` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0011s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000652s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001028s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022564s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022820s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000445s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000977s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001088s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001231s ]
+
+[ 2016-02-06T15:27:33+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000166s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001265s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0001s ]
+SQL: SELECT COUNT(*) AS tp_count FROM delivery obj WHERE obj.status > -1 LIMIT 1   [ RunTime:0.0028s ]
+SQL: SELECT * FROM delivery obj WHERE obj.status > -1 LIMIT 0,2   [ RunTime:0.0028s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000977s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: keyword /home/www/shop/admin.shop.com/Runtime/Cache/Admin/5232c1c1a2156495182d0886b7b5ef1f.php 第 26 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019322s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019474s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000195s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000522s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001676s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001860s ]
+
+[ 2016-02-06T15:27:36+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/index/p/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000197s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001177s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM delivery obj WHERE obj.status > -1 LIMIT 1   [ RunTime:0.0054s ]
+SQL: SELECT * FROM delivery obj WHERE obj.status > -1 LIMIT 2,2   [ RunTime:0.0021s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000081s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000342s ]
+NOTIC: [8] Undefined index: keyword /home/www/shop/admin.shop.com/Runtime/Cache/Admin/5232c1c1a2156495182d0886b7b5ef1f.php 第 26 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022396s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022651s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000765s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001456s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001719s ]
+
+[ 2016-02-06T15:27:38+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/edit/id/4.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000916s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001132s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001465s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `delivery` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002347s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018339s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018674s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000830s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001237s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000083s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000139s ]
+
+[ 2016-02-06T15:31:04+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/edit/id/4.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000049s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000810s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001075s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001324s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `delivery` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0016s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000739s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001200s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026116s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026488s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000948s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001248s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001221s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001344s ]
+
+[ 2016-02-06T15:31:18+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/edit/id/4.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000242s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000963s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003266s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004506s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0099s ]
+SQL: SELECT * FROM `delivery` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0091s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000271s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000680s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.066433s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.066998s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000730s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002456s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005028s ]
+INFO: [ app_end ] --END-- [ RunTime:0.006195s ]
+
+[ 2016-02-06T15:31:21+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000237s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001110s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000695s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000803s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0028s ]
+SQL: SELECT COUNT(*) AS tp_count FROM delivery obj WHERE obj.status > -1 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM delivery obj WHERE obj.status > -1 LIMIT 0,2   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000406s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001701s ]
+NOTIC: [8] Undefined index: keyword /home/www/shop/admin.shop.com/Runtime/Cache/Admin/5232c1c1a2156495182d0886b7b5ef1f.php 第 26 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021792s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022500s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001555s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000904s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001030s ]
+
+[ 2016-02-06T15:31:25+08:00 ] 192.168.1.99 /index.php/Admin/Delivery/index/p/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000081s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001157s ]
+NOTIC: [2] define() expects at least 2 parameters, 1 given /home/www/shop/admin.shop.com/Application/Admin/Conf/config.php 第 2 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `delivery` [ RunTime:0.0037s ]
+SQL: SELECT COUNT(*) AS tp_count FROM delivery obj WHERE obj.status > -1 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM delivery obj WHERE obj.status > -1 LIMIT 2,2   [ RunTime:0.0014s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000069s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000208s ]
+NOTIC: [8] Undefined index: keyword /home/www/shop/admin.shop.com/Runtime/Cache/Admin/5232c1c1a2156495182d0886b7b5ef1f.php 第 26 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021551s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021752s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000670s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000884s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001393s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001829s ]
+

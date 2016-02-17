@@ -78,6 +78,11 @@ class GoodsController extends BaseController {
         $members = $memberLevelModel->select();
         $this->assign('members', $members);
 
+        //准备所有的商品类型数据
+        $goodsTypeModel = D('GoodsType');
+        $goodsTypes = $goodsTypeModel->getList('id,name');
+        $this->assign('goodsTypes',$goodsTypes);
+
         //编辑页面回显的数据准备
         $id = I('get.id');
         if (!empty($id)) {
@@ -100,6 +105,11 @@ class GoodsController extends BaseController {
             $goodsArticleModel = D('GoodsArticle');
             $goods_articles = $goodsArticleModel->getArticle($id);
             $this->assign('goods_articles', $goods_articles);
+
+            //当前商品的属性的值
+            $goodsAttributeModel = D('GoodsAttribute');
+            $goodsAttributes = $goodsAttributeModel->getList($id);
+            $this->assign('goodsAttributes',json_encode($goodsAttributes));
         }
     }
 }

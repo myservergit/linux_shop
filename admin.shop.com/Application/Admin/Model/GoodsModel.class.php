@@ -19,12 +19,13 @@ class GoodsModel extends BaseModel {
         array('goods_status', 'require', '商品状态不能为空!'),
         array('status', 'require', '是否显示不能为空!'),
     );
-    protected function _handleRows(&$rows){
-        foreach($rows as &$row){
-            $row['is_best']=($row['goods_status']&1);
-            $row['is_new']=(($row['goods_status']&2)>>1);
-            $row['is_hot']=(($row['goods_status']&4)>>2);
-            $row['is_crazy']=(($row['goods_status']&8)>>3);
+
+    protected function _handleRows(&$rows) {
+        foreach ($rows as &$row) {
+            $row['is_best'] = ($row['goods_status'] & 1);
+            $row['is_new'] = (($row['goods_status'] & 2) >> 1);
+            $row['is_hot'] = (($row['goods_status'] & 4) >> 2);
+            $row['is_crazy'] = (($row['goods_status'] & 8) >> 3);
         }
         unset($row);
     }
@@ -47,7 +48,7 @@ class GoodsModel extends BaseModel {
     public function add($requestData) {
         $this->startTrans();
         $this->handleGoodsStatus();
-        $this->data['add_time']=NOW_TIME;
+        $this->data['add_time'] = NOW_TIME;
         $id = parent::add();
         if ($id === false) {
             $this->rollback();
@@ -90,9 +91,44 @@ class GoodsModel extends BaseModel {
             return false;
         }
 
+        //处理商品属性
+        $result = $this->addGoodsAttribute($id, $requestData['goodsAttribute']);
+        if ($result === false) {
+            return false;
+        }
+
         //事务的提交
         $this->commit();
         return $id;
+    }
+
+    /**
+     * 将商品属性的值保持到goods_attribute表中
+     * @param $goods_id
+     * @param $goodsAttributes
+     */
+    private function addGoodsAttribute($goods_id, $goodsAttributes) {
+        $rows = array();
+
+        foreach ($goodsAttributes as $attribute_id => $value) {
+            if (is_array($value)) {  //该属性是一个多值属性,对应的值是多个值
+                foreach ($value as $v) {
+                    $rows[] = array('goods_id' => $goods_id, 'attribute_id' => $attribute_id, 'value' => $v);
+                }
+            } else {  //单值属性
+                $rows[] = array('goods_id' => $goods_id, 'attribute_id' => $attribute_id, 'value' => $value);
+            }
+        }
+
+        if (!empty($rows)) {
+            $goodsAttributeModel = M('GoodsAttribute');
+            $result = $goodsAttributeModel->addAll($rows);
+            if ($result === false) {
+                $this->error = '添加属性的值失败!';
+                return false;
+            }
+        }
+
     }
 
     /**
@@ -230,8 +266,75 @@ class GoodsModel extends BaseModel {
         if ($rst === false) {
             return false;
         }
+
+        //更新商品属性
+        $result = $this->updateGoodsAttribute($goods_id, $requestData['goodsAttribute']);
+        if ($result === false) {
+            return false;
+        }
+
         //事务的提交
         $this->commit();
         return $rst;
+    }
+
+    /**
+     * 更新商品属性
+     * @param $goods_id
+     * @param $goodsAttributes
+     */
+    private function updateGoodsAttribute($goods_id, $goodsAttributes) {
+        $goodsAttributeModel = D('GoodsAttribute');
+        //查询出数据库中当前商品的所有多值属性
+        $sql = "SELECT ga.* FROM `goods_attribute` as ga  join attribute as a on ga.attribute_id=a.id   where ga.goods_id = $goods_id and a.type=1";
+        $multGoodsAttributeinDB = array();
+        $rows = $this->query($sql);
+        foreach ($rows as $row) {
+            $multGoodsAttributeinDB[$row['attribute_id']][] = $row['value'];    //一个属性的id==>多个值(属性的形式表)
+        }
+        //循环请求中的每个属性, 和数据库中的每个属性进行对比
+        foreach ($goodsAttributes as $attribute_id => $values) {
+            if (!is_array($values)) {   //单值属性,直接将属性的值更新到数据库表中
+                $result = $goodsAttributeModel->where(array('goods_id' => $goods_id, 'attribute_id' => $attribute_id))->save(array('value' => $values));
+                if ($result === false) {
+                    $this->error = '更新单值属性失败!';
+                    return false;
+                }
+            } else {
+                //多值属性的更新..
+                /**
+                 *  请求中没有,数据库中有, 删除请求中没有数据库中有的数据
+                 *  请求中没有,数据库中没有,   不用处理
+                 *  请求中有,数据库中没有,   将请求中有的数据添加数据库中
+                 *  请求中有,数据库中有,       不用处理
+                 */
+                $requestValues = $values;   //起一个别名. 该$requestValues代表其中一个多值属性的值
+                $dbValues = $multGoodsAttributeinDB[$attribute_id];  //根据attribute_id得到数据库中属性对应的值
+                //先检查请求中的数据是否在数据库中,如果不在, 说明请求中有,数据库中没有, 需要将数据添加到数据库中
+                foreach ($requestValues as $requestValue) {
+                    if (!in_array($requestValue, $dbValues)) {  //检查请求中的值,是否在数据库中
+                        $result = $goodsAttributeModel->add(array('goods_id' => $goods_id, 'attribute_id' => $attribute_id, 'value' => $requestValue));
+                        if ($result === false) {
+                            $this->error = '更新多值属性失败!';
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        //循环数据库中的每个属性, 和请求中的每个属性进行对比
+        //数据库中有,请求中没有的.     需要拿着数据库中的每个属性对应的值, 对应标签中属性对应的值.
+        foreach ($multGoodsAttributeinDB as $attribute_id => $valuesInDB) {
+            foreach ($valuesInDB as $valueInDB) {
+                //检查数据库中的值,不在请求中,需要删除数据库中值
+                if (!in_array($valueInDB, $goodsAttributes[$attribute_id])) {
+                    $result = $goodsAttributeModel->where(array('goods_id' => $goods_id, 'attribute_id' => $attribute_id, 'value' => $valueInDB))->delete();
+                    if ($result === false) {
+                        $this->error = '更新多值属性失败!';
+                        return false;
+                    }
+                }
+            }
+        }
     }
 }

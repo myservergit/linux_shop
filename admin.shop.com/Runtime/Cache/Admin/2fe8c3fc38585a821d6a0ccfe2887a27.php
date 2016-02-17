@@ -1,8 +1,27 @@
-<extend name="Common/edit"/>
-<block name="css">
-    <link rel="stylesheet" href="__ZTREE__/css/zTreeStyle/zTreeStyle.css" type="text/css">
-</block>
-<block name="form">
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ECSHOP 管理中心 - <?php echo ($meta_title); ?> </title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="http://admin.shop.com/Public/Admin/css/general.css" rel="stylesheet" type="text/css"/>
+    <link href="http://admin.shop.com/Public/Admin/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="http://admin.shop.com/Public/Admin/css/common.css" rel="stylesheet" type="text/css"/>
+    
+    <link rel="stylesheet" href="http://admin.shop.com/Public/Admin/zTree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+
+</head>
+<body>
+
+<h1>
+    <span class="action-span"><a href="<?php echo U('index');?>"><?php echo mb_substr($meta_title,2,null,'utf-8');?>列表</a></span>
+    <span class="action-span1"><a href="index.php?act=main">ECSHOP 管理中心</a> </span><span id="search_id"
+                                                                                         class="action-span1"> - <?php echo ($meta_title); ?> </span>
+
+    <div style="clear:both"></div>
+</h1>
+
     <div id="tabbar-div">
         <p>
             <span class="tab-front">通用信息</span>
@@ -14,19 +33,19 @@
         </p>
     </div>
     <div class="main-div">
-        <form method="post" action="{:U()}">
+        <form method="post" action="<?php echo U();?>">
             <table cellspacing="1" cellpadding="3" width="100%">
                 <tr>
                     <td class="label">商品名称</td>
                     <td>
-                        <input type='text' name='name' maxlength='60' value='{$name}'/> <span
+                        <input type='text' name='name' maxlength='60' value='<?php echo ($name); ?>'/> <span
                             class="require-field">*</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="label">简称</td>
                     <td>
-                        <input type='text' name='short_name' maxlength='60' value='{$short_name}'/> <span
+                        <input type='text' name='short_name' maxlength='60' value='<?php echo ($short_name); ?>'/> <span
                             class="require-field">*</span>
                     </td>
                 </tr>
@@ -53,39 +72,39 @@
                 <tr>
                     <td class="label">商品品牌</td>
                     <td>
-                        {:arr2select('brand_id',$brands,$brand_id)}
+                        <?php echo arr2select('brand_id',$brands,$brand_id);?>
                         <span class="require-field">*</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="label">供货商</td>
                     <td>
-                        {:arr2select('supplier_id',$suppliers,$supplier_id)}
+                        <?php echo arr2select('supplier_id',$suppliers,$supplier_id);?>
                         <span class="require-field">*</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="label">本店价格</td>
                     <td>
-                        <input type='text' name='shop_price' maxlength='60' value='{$shop_price}'/> <span
+                        <input type='text' name='shop_price' maxlength='60' value='<?php echo ($shop_price); ?>'/> <span
                             class="require-field">*</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="label">市场价格</td>
                     <td>
-                        <input type='text' name='market_price' maxlength='60' value='{$market_price}'/> <span
+                        <input type='text' name='market_price' maxlength='60' value='<?php echo ($market_price); ?>'/> <span
                             class="require-field">*</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="label">商品LOGO</td>
                     <td>
-                        <input type='hidden' class="logo" name='logo' maxlength='60' value="{$logo}"/>
+                        <input type='hidden' class="logo" name='logo' maxlength='60' value="<?php echo ($logo); ?>"/>
                         <input id="goods_logo" name="goods_logo" type="file">
-                        <div class="upload-img-box" <empty name="id">style="display: none"</empty>>
+                        <div class="upload-img-box" <?php if(empty($id)): ?>style="display: none"<?php endif; ?>>
                             <div class="upload-pre-item">
-                                <img src="__GOODS__/{$logo}!m">
+                                <img src="http://itsource-goods.b0.upaiyun.com/<?php echo ($logo); ?>!m">
                             </div>
                         </div>
                     </td>
@@ -93,7 +112,7 @@
                 <tr>
                     <td class="label">库存</td>
                     <td>
-                        <input type='text' name='stock' maxlength='60' value='{$stock}'/> <span
+                        <input type='text' name='stock' maxlength='60' value='<?php echo ($stock); ?>'/> <span
                             class="require-field">*</span>
                     </td>
                 </tr>
@@ -120,33 +139,26 @@
             <table style="display: none" cellspacing="1" cellpadding="3" width="100%">
                 <tr>
                     <td>
-                        <textarea id="editor" name="intro">{$intro}</textarea>
+                        <textarea id="editor" name="intro"><?php echo ($intro); ?></textarea>
                     </td>
                 </tr>
             </table>
             <table style="display: none" cellspacing="1" cellpadding="3" width="100%">
-                <volist name="members" id="member">
-                    <tr>
-                        <td class="label">{$member.name}</td>
+                <?php if(is_array($members)): $i = 0; $__LIST__ = $members;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$member): $mod = ($i % 2 );++$i;?><tr>
+                        <td class="label"><?php echo ($member["name"]); ?></td>
                         <td>
-                            <input type='text' name='goods_member_prices[{$member.id}]' maxlength='60' value='{$goods_member_prices[$member['id']]}'/> <span class="require-field">*</span>
+                            <input type='text' name='goods_member_prices[<?php echo ($member["id"]); ?>]' maxlength='60' value='<?php echo ($goods_member_prices[$member['id']]); ?>'/> <span class="require-field">*</span>
                         </td>
-                    </tr>
-                </volist>
+                    </tr><?php endforeach; endif; else: echo "" ;endif; ?>
             </table>
             <table style="display: none" cellspacing="1" cellpadding="3" width="100%">
                 <tr>
-                    <td class="label">商品类型</td>
+                    <td class="label">商品属性</td>
                     <td>
-                        {:arr2select('goods_type_id',$goodsTypes,$goods_type_id)}
-                        <span class="require-field">*</span>
+                        <input type='text' name='name3' maxlength='60' value='<?php echo ($name); ?>'/> <span
+                            class="require-field">*</span>
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="2"><hr/></td>
-                </tr>
-                <tbody id="attributes">
-                </tbody>
             </table>
             <style type="text/css">
                 .upload-img-gallery .upload-pre-item{
@@ -167,12 +179,10 @@
                 <tr>
                     <td>
                         <div class="upload-img-gallery">
-                            <volist name="goods_photos" id="goods_photo">
-                                <div class="upload-pre-item">
-                                    <img src="__GOODS__/{$goods_photo.path}!m">
-                                    <a href="javascript:;" photoId="{$goods_photo.id}"><img src="__IMG__/0.gif"/></a>
-                                </div>
-                            </volist>
+                            <?php if(is_array($goods_photos)): $i = 0; $__LIST__ = $goods_photos;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$goods_photo): $mod = ($i % 2 );++$i;?><div class="upload-pre-item">
+                                    <img src="http://itsource-goods.b0.upaiyun.com/<?php echo ($goods_photo["path"]); ?>!m">
+                                    <a href="javascript:;" photoId="<?php echo ($goods_photo["id"]); ?>"><img src="http://admin.shop.com/Public/Admin/images/0.gif"/></a>
+                                </div><?php endforeach; endif; else: echo "" ;endif; ?>
                         </div>
                     </td>
                 </tr>
@@ -190,7 +200,7 @@
             <table cellspacing="1" cellpadding="3" width="100%" style="display: none">
                 <tr>
                     <td colspan="3">
-                        <img src="__IMG__/icon_search.gif" width="26" height="22" border="0" alt="SEARCH">
+                        <img src="http://admin.shop.com/Public/Admin/images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH">
                         文章标题 <input type="text" name="keyword" class="keyword">
                         <input type="button" value=" 搜索 " class="button searchArticle">
                     </td>
@@ -213,31 +223,41 @@
                     </td>
                     <td width="45%">
                         <select class="right" size="20" style="width:100%" multiple="multiple">
-                            <volist name="goods_articles" id="goods_article">
-                                <option value="{$goods_article.article_id}">{$goods_article.article_name}</option>
-                            </volist>
+                            <?php if(is_array($goods_articles)): $i = 0; $__LIST__ = $goods_articles;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$goods_article): $mod = ($i % 2 );++$i;?><option value="<?php echo ($goods_article["article_id"]); ?>"><?php echo ($goods_article["article_name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
                         </select>
                         <div class="goods_article_id">
-                            <volist name="goods_articles" id="goods_article">
-                                <input type='hidden' name='article_ids[]' value='{$goods_article.article_id}'>
-                            </volist>
+                            <?php if(is_array($goods_articles)): $i = 0; $__LIST__ = $goods_articles;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$goods_article): $mod = ($i % 2 );++$i;?><input type='hidden' name='article_ids[]' value='<?php echo ($goods_article["article_id"]); ?>'><?php endforeach; endif; else: echo "" ;endif; ?>
                         </div>
                     </td>
                 </tr>
             </table>
             <div style="text-align: center">
-                <input type="hidden" name="id" value="{$id}">
+                <input type="hidden" name="id" value="<?php echo ($id); ?>">
                 <input type="submit" class="button ajax_post" value=" 确定 "/>
                 <input type="reset" class="button" value=" 重置 "/>
             </div>
         </form>
     </div>
-</block>
-<block name="js">
-    <script type="text/javascript" src="__ZTREE__/js/jquery.ztree.core-3.5.js"></script>
-    <script src="__UPLOADIFY__/jquery.uploadify.min.js" type="text/javascript"></script>
-    <script type="text/javascript" charset="utf-8" src="__UEDIT__/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="__UEDIT__/ueditor.all.min.js"> </script>
+
+
+<div id="footer">
+    共执行 1 个查询，用时 0.012502 秒，Gzip 已禁用，内存占用 1.337 MB<br/>
+    版权所有 &copy; 2005-2012 上海商派网络科技有限公司，并保留所有权利。
+</div>
+<script type="text/javascript" src="http://admin.shop.com/Public/Admin/js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="http://admin.shop.com/Public/Admin/layer/layer.js"></script>
+<script type="text/javascript" src="http://admin.shop.com/Public/Admin/js/common.js"></script>
+<script type="text/javascript" src="http://admin.shop.com/Public/Admin/js/jquery.form.js"></script>
+<script>
+    $(function(){
+        $('.status').val([<?php echo ((isset($status) && ($status !== ""))?($status):1); ?>]);
+    });
+</script>
+
+    <script type="text/javascript" src="http://admin.shop.com/Public/Admin/zTree/js/jquery.ztree.core-3.5.js"></script>
+    <script src="http://admin.shop.com/Public/Admin/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+    <script type="text/javascript" charset="utf-8" src="http://admin.shop.com/Public/Admin/uedit/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="http://admin.shop.com/Public/Admin/uedit/ueditor.all.min.js"> </script>
 
     <script type="text/javascript">
         $(function () {
@@ -285,17 +305,15 @@
 
             };
             //树的节点数据
-            var zNodes = {$zNodes};
+            var zNodes = <?php echo ($zNodes); ?>;
             //得到一个树状结构
             var treeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
-            <empty name = "id" >
-                treeObj.expandAll(true);
-            <else/>
-                var node = treeObj.getNodeByParam("id", {$goods_category_id});
+            <?php if(empty($id)): ?>treeObj.expandAll(true);
+            <?php else: ?>
+                var node = treeObj.getNodeByParam("id", <?php echo ($goods_category_id); ?>);
                 $('.goods_category_id').val(node.id);
                 $('.goods_category_name').val(node.name);
-                treeObj.selectNode(node);
-            </empty>
+                treeObj.selectNode(node);<?php endif; ?>
             /******************分类的树结构    结束*************************************/
 
             /******************图片上传插件    开始*************************************/
@@ -308,12 +326,12 @@
                 'fileTypeExts' : '*.gif; *.jpg; *.png', //文件后缀名的限制
 //                'formData'      : {'dir' : 'brand'},    //上传文件时额外传递的参数
                 'formData'      : {'dir' : 'itsource-goods'},
-                swf: '__UPLOADIFY__/uploadify.swf',
-                uploader: "{:U('Upload/index')}",   //处理上传插件上传上来的文件
+                swf: 'http://admin.shop.com/Public/Admin/uploadify/uploadify.swf',
+                uploader: "<?php echo U('Upload/index');?>",   //处理上传插件上传上来的文件
                 'onUploadSuccess' : function(file, data, response) {
                     $('.upload-img-box').show();
 //                    $('.upload-img-box .upload-pre-item img').attr('src','/Uploads/'+data);
-                    $('.upload-img-box .upload-pre-item img').attr('src','__GOODS__/'+data);
+                    $('.upload-img-box .upload-pre-item img').attr('src','http://itsource-goods.b0.upaiyun.com/'+data);
                     $('.logo').val(data);
                 },
                 'onUploadError' : function(file, errorCode, errorMsg, errorString) {
@@ -323,9 +341,8 @@
             /******************图片上传插件    结束*************************************/
 
             /******************商品状态的回显    开始*************************************/
-            <notempty  name="id">
-            var goods_status_arr=[];
-            var goods_status={$goods_status};
+            <?php if(!empty($id)): ?>var goods_status_arr=[];
+            var goods_status=<?php echo ($goods_status); ?>;
             if(goods_status&1){
                 goods_status_arr.push(1);
             }
@@ -341,8 +358,7 @@
             if(goods_status&16){
                 goods_status_arr.push(16);
             }
-            $('.goods_status').val(goods_status_arr);
-            </notempty>
+            $('.goods_status').val(goods_status_arr);<?php endif; ?>
             /******************商品状态的回显    结束*************************************/
 
             /******************商品相册    开始*************************************/
@@ -355,13 +371,13 @@
                 'fileTypeExts' : '*.gif; *.jpg; *.png', //文件后缀名的限制
 //                'formData'      : {'dir' : 'brand'},    //上传文件时额外传递的参数
                 'formData'      : {'dir' : 'itsource-goods'},
-                swf: '__UPLOADIFY__/uploadify.swf',
-                uploader: "{:U('Upload/index')}",   //处理上传插件上传上来的文件
+                swf: 'http://admin.shop.com/Public/Admin/uploadify/uploadify.swf',
+                uploader: "<?php echo U('Upload/index');?>",   //处理上传插件上传上来的文件
                 'onUploadSuccess' : function(file, data, response) {
                     $galleryHtml='<div class="upload-pre-item">\
-                    <img src="__GOODS__/'+data+'!m">\
+                    <img src="http://itsource-goods.b0.upaiyun.com/'+data+'!m">\
                     <input type="hidden" name="goods_photo_paths[]" maxlength="60" value="'+data+'"/>\
-                    <a href="javascript:;"><img src="__IMG__/0.gif"/></a>\
+                    <a href="javascript:;"><img src="http://admin.shop.com/Public/Admin/images/0.gif"/></a>\
                             </div>';
                     $('.upload-img-gallery').append($galleryHtml);
                 },
@@ -375,7 +391,7 @@
                 var photo_id=$(this).attr('photoId');
                 var that=$(this);
                 if(photo_id){
-                    $.post('{:U("GoodsPhoto/remove")}',{id:photo_id},function(data){
+                    $.post('<?php echo U("GoodsPhoto/remove");?>',{id:photo_id},function(data){
                         if(data.status==0){
                             layer.msg(data.info,{
                                 icon: 2
@@ -394,7 +410,7 @@
             $('.searchArticle').click(function(){
                 var kw=$('.keyword').val();
                 $('.left').empty();
-                $.getJSON('{:U("Article/search")}',{keyword:kw},function(data){
+                $.getJSON('<?php echo U("Article/search");?>',{keyword:kw},function(data){
                     if(data){
                         $(data).each(function(){
                             $('.left').append('<option value="'+this.id+'">'+this.name+'</option>');
@@ -446,72 +462,9 @@
                 });
             }
             /******************相关文章    结束*************************************/
-
-            /******************商品属性    开始*************************************/
-            $('.goods_type_id').change(function(){
-                //>>1.根据用户选择的商品类型查询出该类型下面的属性
-                var goods_type_id = $(this).val();
-                $.ajax({
-                    type: "GET",
-                    url: '{:U("Attribute/getByGoodsTypeId")}',
-                    data: "goods_type_id="+goods_type_id,
-                    dataType: "json",
-                    success:generateAttributeForm,
-                    async: false   //同步 , 因为下面的代码需要在发送请求之后,立马要使用到响应的内容
-                });
-            })
-            /**
-             * 根据rows(属性)生成属性对应的表单元素
-             */
-            function generateAttributeForm(rows){
-                //>>2.根据rows中的内容 拼出 每个属性对应的一行
-
-                /**
-                 * 类型(type)      录入方式(input_type)               表单
-                 *  0(单值)      0(手工录入)              单行录入框
-                 *  0(单值)      1(从可选值中选择)         下拉列表
-                 *  0(单值)      2 (多行文本)              多行文本域
-                 *  1(多值)      1(从可选值中选择)         复选框
-                 */
-                var trhtml ='';
-                $(rows).each(function(){
-                    trhtml+="<tr><td class='label'>"+this.name+":</td><td>";
-                    if(this.type==0){  //单值
-                        if(this.input_type==0){  //手工录入
-                            trhtml+="<input type='text' name='goodsAttribute["+this.id+"]'/>";
-                        }else if(this.input_type==2){  //多行文本
-                            trhtml+="<textarea name='goodsAttribute["+this.id+"]'></textarea>";
-                        }else if(this.input_type==1){   //从可选值中选择
-                            trhtml+="<select name='goodsAttribute["+this.id+"]'>";
-                            //循环可选值生成下拉列表中的每一个选项
-                            $(this.option_values).each(function(){   //this代表每一个可选值
-                                trhtml+="<option value='"+this+"'>"+this+"</option>";
-                            });
-                            trhtml+="</select>";
-                        }
-                    }else if(this.type==1){  //多值的情况下,需要将可选值生成多个复选框
-                        var that = this;
-                        $(this.option_values).each(function(){
-                            trhtml+= "<input type='checkbox' name='goodsAttribute["+that.id+"][]' value='"+this+"'/>"+this+"  &nbsp; "
-                        });
-                    }
-                    trhtml+="</td></tr>"
-                });
-                $('#attributes').html(trhtml);
-            }
-
-            //当编辑时,激活change事件,因为change事件处理函数可以帮外面生成当前属性表单
-            <notempty name='id'>
-            $('.goods_type_id').change();
-
-            //商品属性(从数据库中查询出的商品属性)
-            var goodsAttributes = {$goodsAttributes};
-            for(var attribute_id in goodsAttributes){
-                $(':input[name^="goodsAttribute['+attribute_id+']"]').val(goodsAttributes[attribute_id]);
-            }
-            </notempty>
-            /******************商品属性    结束*************************************/
         });
 
     </script>
-</block>
+
+</body>
+</html>

@@ -34,7 +34,7 @@ if (!function_exists('array_column')) {//版本兼容处理
  * 下拉菜单的生成
  */
 function arr2select($name,$rows,$defaultValue='',$valueField='id',$textField='name') {
-    $select_html="<select name='$name'>";
+    $select_html="<select class='$name' name='$name'>";
     $select_html.="<option value = '0' > --请选择--</option >";
     foreach($rows as $row){
         $selected='';

@@ -1,0 +1,122 @@
+<extend name="Common/edit"/>
+<block name="form">
+    <div class="main-div">
+        <form method="post" action="{:U()}">
+            <table cellspacing="1" cellpadding="3" width="100%">
+                <tr>
+                    <td class="label">属性名称</td>
+                    <td>
+                        <input type='text' name='name' maxlength='60' value='{$name}'/> <span
+                            class="require-field">*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">商品类型</td>
+                    <td>
+                        {:arr2select('goods_type_id',$goodsTypes,$goods_type_id)}
+                        <span class="require-field">*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">属性类型</td>
+                    <td>
+                        <input type='radio' class='type' name='type' value='0'/>单值<input type='radio' class='type'
+                                                                                         name='type' value='1'/>多值 <span
+                            class="require-field">*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">录入方式</td>
+                    <td>
+                        <input type='radio' class='input_type' name='input_type' value='0'/>手工录入<input type='radio'
+                                                                                                       class='input_type'
+                                                                                                       name='input_type'
+                                                                                                       value='1'/>从下面可选值中选择<input
+                            type='radio' class='input_type' name='input_type' value='2'/>多行文本 <span
+                            class="require-field">*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">可选值</td>
+                    <td>
+                        <textarea name='option_values' class="option_values" cols='60' rows='4'>{$option_values}</textarea> <span
+                            class="require-field">*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">排序</td>
+                    <td>
+                        <input type="text" name="sort" maxlength="40" size="15" value="{$sort|default=20}"/> <span
+                            class="require-field">*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">是否显示</td>
+                    <td>
+                        <input type='radio' class='status' name='status' value='1'/>是<input type='radio' class='status'
+                                                                                            name='status' value='0'/>否
+                        <span class="require-field">*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">分类简介</td>
+                    <td>
+                        <textarea name="intro" cols="60" rows="4">{$intro}</textarea> <span
+                            class="require-field">*</span>
+                    </td>
+                </tr>
+                <td colspan="2" align="center"><br/>
+                    <input type="hidden" name="id" value="{$id}">
+                    <input type="submit" class="button ajax_post" value=" 确定 "/>
+                    <input type="reset" class="button" value=" 重置 "/>
+                </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        $(function(){
+            $('.type').val([{$type|default=0}]);
+            $('.input_type').val([{$input_type|default=0}]);
+            $('.option_values').prop('disabled',true);
+
+        /***************************选择属性和录入  开始*****************************/
+        //选择用户录入时
+        $('.input_type').click(clickInputType);
+        function clickInputType(){
+            //商品类型的值
+            var type=$('.type:checked').val();
+            if(type==0){    //选择单值时
+                var input_type=$('.input_type:checked').val();
+                if(input_type==1){  //选择从下面可选值中选择时
+                    $('.option_values').prop('disabled',false);
+                }else{
+                    $('.option_values').prop('disabled',true);
+                }
+            }
+        }
+
+        //选择属性类型时
+        $('.type').click(clickType);
+        function clickType(){
+            var type = $('.type:checked').val();
+            if(type==1){  //选择多值时
+                $('.input_type').val([1]);  //选中从下面可选值中选择
+                $('.input_type:not(:checked)').prop('disabled',true);
+                $('.option_values').prop('disabled',false);
+            }else{
+                $('.input_type:not(:checked)').prop('disabled',false);
+            }
+        }
+
+        //页面编辑是的回显,属性和录入的状态改变
+        <notempty name='id'>
+        clickInputType();
+        clickType();
+        </notempty>
+        /***************************选择属性和录入  结束*****************************/
+        });
+    </script>
+</block>
